@@ -5,7 +5,7 @@
 ---
 
 ## Menu de navigation
-- [code](https://github.com/WebDevCF2m2022/PHPOO)
+- [code](https://github.com/mikhawa/PHP-OO)
   - [1. Les classes et les objets](#1-les-classes-et-les-objets)
     - [1.1. Déclaration d'une classe](#11-déclaration-dune-classe)
       - [1.1.2 La visibilité des propriétés et des méthodes](#112-la-visibilité-des-propriétés-et-des-méthodes)
