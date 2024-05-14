@@ -4,8 +4,21 @@
 
 ---
 
+L'orienté objet, en **PHP** et dans d'autres langages, est également nommé **POO** (programmation orientée objet).
+
+C'est un **paradigme** de programmation informatique. 
+
+La **POO** consiste en la définition et l'interaction de briques logicielles appelées objets.
+
+Un **objet** représente un concept, une idée ou toute entité du monde physique, comme une voiture, une personne ou encore une page d'un livre. Il possède une **structure** interne et un **comportement**, et il sait interagir avec ses pairs. 
+
+Il s'agit donc de représenter ces objets et leurs relations. L'interaction entre les objets via leurs relations permet de concevoir et réaliser les fonctionnalités attendues, de mieux résoudre le ou les problèmes. Dès lors, l'étape de modélisation revêt une importance majeure et nécessaire pour la POO. C'est elle qui permet de transcrire les éléments du réel sous forme virtuelle.
+
+
+
 ## Menu de navigation
 - [code](https://github.com/mikhawa/PHP-OO)
+- [Introduction](#php-8-orienté-objet)
   - [1. Les classes et les objets](#1-les-classes-et-les-objets)
     - [1.1. Déclaration d'une classe](#11-déclaration-dune-classe)
       - [1.1.2 La visibilité des propriétés et des méthodes](#112-la-visibilité-des-propriétés-et-des-méthodes)
