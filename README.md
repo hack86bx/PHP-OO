@@ -22,6 +22,7 @@ Il s'agit donc de représenter ces objets et leurs relations. L'interaction entr
   - [1. Les classes et les objets](#1-les-classes-et-les-objets)
     - [1.1. Déclaration d'une classe](#11-déclaration-dune-classe)
       - [1.1.2 La visibilité des propriétés et des méthodes](#112-la-visibilité-des-propriétés-et-des-méthodes)
+      - A FAIRE : readonly (8.1)
     - [1.2. Instanciation d'une classe](#12-instanciation-dune-classe)
     - [1.3. Accès aux propriétés et aux méthodes d'une classe depuis l'intérieur de la classe](#13-accès-aux-propriétés-et-aux-méthodes-dune-classe-depuis-lintérieur-de-la-classe)
     - [1.4. Accès aux propriétés et aux méthodes publiques d'une classe depuis l'extérieur de la classe pour lecture ET modification](#14-accès-aux-propriétés-et-aux-méthodes-publiques-dune-classe-depuis-lextérieur-de-la-classe-pour-lecture-et-modification)

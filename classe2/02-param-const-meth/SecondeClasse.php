@@ -25,7 +25,8 @@ class SecondeClasse{
     Méthodes
     Ce sont des fonctions internes à l'instance ou la classe
     */
-    public function getParam2(){
+    public function getParam2() : string
+    {
         // renvoie le paramètre 2 (pas de $), le $this représente l'instance (objet)
         return $this->param2;
     }
