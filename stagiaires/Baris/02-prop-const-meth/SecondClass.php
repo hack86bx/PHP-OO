@@ -22,27 +22,5 @@ class SecondClass{
     */
     const CONSTANTE_1 = "constante publique 1";
 
-    const CONSTANTE_2 = 4;
-
-    /* methodes 
-    ce sont des fonctions qui ont différents visibilités
-    la visibilité par défaut est publique
-    on utilise le camelcase comme règle de nommage (+ règles des fonctions)
-    */
-
-//  publique par défaut (mauvaise pratique de ne pas l'indiquer)
-    function bonjourLesAmis(){
-        echo "Bonjour les amis"; // deuxième mauvaise pratique, il vaut mieux utiliser un return  en sortie, sinon ceci est 
-
-    }
-
-    // getter => renvoi le contenu d'un paramètre (qui ne serait en principe pas public), dans ce cas IL DOIT être un string, sinon erreur fatale
-    public function getParam2():string
-    {
-        // $this représente l'instance actuelle
-        return $this->param2;
-    }
-
-
 
 }
