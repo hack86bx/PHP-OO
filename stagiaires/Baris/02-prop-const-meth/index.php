@@ -37,4 +37,10 @@ echo $instance1::CONSTANTE_1; // mauvaise pratique
 echo "<br>";
 echo SecondClass::CONSTANTE_1; // bonne pratique
 
+?>
+<h3>Methodes publiques</h3>
+<p> ces methodes peuvent être appelées en dehors (comme en dedans) de l'instance avec l'opérateur</p>
+<code>$instance1->bonjourLesAmies();</code>
+<?php 
+$instance1->bonjourLesAmis(); // affiche (donc mauvaise pratique)
 
