@@ -17,3 +17,13 @@ var_dump(
 echo $instance1->param2;
 ?>
 <h4> On peut modifier depuis l'extérieur de l'instance vers vérification : </h4>
+<code>$instance1->param = 25;
+    echo $instance1->param;
+</code><br>
+<?php
+$instance1->param1 = 25;
+echo $instance1->param1;
+
+var_dump(
+    $instance1,
+);
