@@ -59,3 +59,9 @@ echo $instance1->param1;
  <code> $instance1->bonjourLesAmis();</code>
  <?php
  $instance1->bonjourLesAmis();          // affiche (donc mauvaise pratique)
+?><br>
+ <code> echo $instance1->getParam2(); </code>
+<?php
+echo $instance1->getParam2();           // getter valide
+
+

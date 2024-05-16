@@ -35,5 +35,13 @@ class SecondeClasse{
 
     }
 
+    //guetter => renvoie le contenu d'un paramètre (qui ne serait en principe pas public),
+    // dans ce cas, il DOIT être un string, sinon erreur fatale
+    public function getParam2(): string
+    {
+        // $this représente l'instance actuelle
+        return $this->param2;
+    }
+
 
 }
