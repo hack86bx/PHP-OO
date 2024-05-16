@@ -10,18 +10,18 @@ $instance2 = new PremiereClass();
 <p>Une instanciation est créée avec le mot clef new, la variable ne contient pas réellement l'objet, ce n'est qu'un index (ou pointer) vers l'objet en mémoire.</p>
 
 <code>
-    $instabce3 = $instance1;
-    $instabce3 n'est qu'un raccourci vers le même objet (= ne permet pas le clonage)
+    $instance3 = $instance1;
+    $instance3 n'est qu'un raccourci vers le même objet (= ne permet pas le clonage)
 </code>
 <?php
 
-$instabce3 = $instance1;
+$instance3 = $instance1;
 
 
 var_dump(
     $instance1,
     $instance2,
-    $instabce3,
+    $instance3,
 );
 
 ?>
