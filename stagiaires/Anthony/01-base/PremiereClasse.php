@@ -7,8 +7,8 @@ Le nom de la classe doit être le nom du fichier.
 */
 
 class PremiereClasse {
-    
     //Propriétés
+    
     
 
 }
