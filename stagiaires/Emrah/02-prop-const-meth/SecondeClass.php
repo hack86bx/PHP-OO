@@ -21,6 +21,8 @@ class SecondeClass{
     La visibilité par défaut est publique
     */
     const CONSTANTE_1 = "constante publique 1";
+    const CONSTANTE_2 = 4;
 
+    
 
 }
