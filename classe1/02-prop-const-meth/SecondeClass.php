@@ -21,6 +21,25 @@ class SecondeClass{
     La visibilité par défaut est publique
     */
     const CONSTANTE_1 = "constante publique 1";
+    const CONSTANTE_2 = 4;
 
+    /*
+    Méthodes
+    Ce sont des fonctions qui ont différentes visibilités
+    La visibilité par défaut est publique
+    On utilise le camelCase comme règle de nommage (+ règles des fonctions)
+    */
+
+    // publique par défaut (mauvaise pratique de ne pas l'indiquer)
+    function bonjourLesAmies(){ 
+        echo "Bonjour les ami.e.s"; // deuxième mauvaise pratique, il vaut mieux utiliser un return en sortie, sinon ceci est une procédure
+    }
+
+    // getter => renvoi le contenu d'un paramètre (qui ne serait en principe pas public), dans ce cas il DOIT être un string, sinon erreur fatale
+    public function getParam2(): string 
+    {
+        // $this représente l'instance actuelle
+        return $this->param2;
+    }
 
 }
