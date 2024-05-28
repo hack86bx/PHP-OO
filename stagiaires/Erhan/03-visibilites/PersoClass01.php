@@ -26,6 +26,8 @@ class  PersoClass01
             }            
         } 
 
+
+
         
         public function getVivant(): bool
         {
@@ -37,4 +39,30 @@ class  PersoClass01
         {
             $this->vivant = $alive;
         }
+
+
+
+
+
+        private function estVivante(): string
+        {
+            if($this->vivant === true){
+                return " et est vivant.";
+            }else{
+                return " et est décédé.";
+            }
+        }
+
+        public function infoPerso(){
+        if(is_null($this->nom)){
+            //$this->nom = "Anonyme";
+            //ou
+            $this->setNom("Anonyme");
+        }
+        
+            return $this->nom. " est ".
+            self::ESPECES.
+            $this->estVivante();
+        }
+
 }
