@@ -33,16 +33,52 @@ class PersoClass01 {
                 throw new Exception("Nom trop court");
             }
         } 
-
+        
+        // GETTER
         public function getVivant(): bool
         {
             return $this->vivant;
         }
-
+        // SETTER
         public function setVivant(bool $alive): void
         {
             $this->vivant = $alive;
         }
+
+        // création d'une méthode privée, elle ne pourra être appelée que dans l'instance de la classe
+        private function estVivante(): string
+        {
+            // on vérifie un paramètre (privé, mais on est dans l'instance de classe)
+            if($this->vivant === true){
+                return " et est vivant.";
+            }else{
+                return " et est décédé.";
+            }
+        }
+
+        // création d'une méthode publique qui va indiquer toutes les infos sur le personnage
+        public function infoPerso(){
+            /*
+            depuis une méthode publique on peut afficher
+            $this->nom => une propriété privée ($this représente l'instance)
+            self::ESPECES => une constante de la classe (self représente la classe)
+            $this->estVivante() => une méthode privée
+            */
+
+            // si le nom n'a pas été défini par setNom()
+            if(is_null($this->nom)){
+                // on le met en anonyme
+                // $this->nom = "Anonyme "; // mise à jour de la propriété
+                //ou
+                $this->setNom("Anonyme");
+            }
+
+            return $this->nom. " est ".
+                            self::ESPECES.
+                            $this->estVivante() ;
+        }
+
+
 
 
 }
