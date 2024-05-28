@@ -45,6 +45,9 @@ class PersoClass01 {
 
     // creation of a public method that will indicate all the info about the person
     public function infoPerso() {
+        if(is_null($this->nom))  {
+            $this->nom = "Unknown ";
+        }
         return $this->nom." est un ".self::ESPECES.$this->estVivant();
     }
 
