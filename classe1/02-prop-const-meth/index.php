@@ -2,6 +2,7 @@
 
 require_once "SecondeClass.php";
 
+// instanciation d'un objet de type SecondeClass
 $instance1 = new SecondeClass();
 
 var_dump(
