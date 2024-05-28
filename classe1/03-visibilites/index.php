@@ -33,8 +33,20 @@ echo $perso01->getVivant();
 
 $perso02->setVivant(false);
 
+/* Appel d'une méthode privée (ou protégé) depuis l'extérieur :
+Interdit !  
+echo $perso02->estVivante();
+*/
+
 //$perso03 = $perso01;
 
 //$perso03->setNom("Yep");
+$perso03 = new PersoClass01();
+echo "<br>";
+echo $perso01->infoPerso();
+echo "<br>";
+echo $perso02->infoPerso();
+echo "<br>";
+echo $perso03->infoPerso();
 
-var_dump($perso01,$perso02);
+var_dump($perso01,$perso02,$perso03);
