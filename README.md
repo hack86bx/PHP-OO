@@ -17,11 +17,12 @@ Il s'agit donc de représenter ces objets et leurs relations. L'interaction entr
 
 
 ## Menu de navigation
-- [code](https://github.com/mikhawa/PHP-OO)
+- [code](https://github.com/WebDevCF2m2023/PHP-OO)
 - [Introduction](#php-8-orienté-objet)
   - [1. Les classes et les objets](#1-les-classes-et-les-objets)
     - [1.1. Déclaration d'une classe](#11-déclaration-dune-classe)
       - [1.1.2 La visibilité des propriétés et des méthodes](#112-la-visibilité-des-propriétés-et-des-méthodes)
+      - A FAIRE : readonly (8.1)
     - [1.2. Instanciation d'une classe](#12-instanciation-dune-classe)
     - [1.3. Accès aux propriétés et aux méthodes d'une classe depuis l'intérieur de la classe](#13-accès-aux-propriétés-et-aux-méthodes-dune-classe-depuis-lintérieur-de-la-classe)
     - [1.4. Accès aux propriétés et aux méthodes publiques d'une classe depuis l'extérieur de la classe pour lecture ET modification](#14-accès-aux-propriétés-et-aux-méthodes-publiques-dune-classe-depuis-lextérieur-de-la-classe-pour-lecture-et-modification)
@@ -143,7 +144,7 @@ Il est important de noter que la déclaration d'une classe en PHP ne crée pas d
 $objet = new MaClasse();
 ```
 
-Dans cet exemple, nous avons instancié la classe MaClasse et stocké l'objet dans la variable $objet.
+Dans cet exemple, nous avons instancié la classe MaClasse qui est un objet stocké en mémoire, la variable $objet est une étiquette pointant vers celui-ci.
 
 
 ---
