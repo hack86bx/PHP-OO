@@ -1,13 +1,29 @@
 <?php
-class SecondeClasse{
-    /*Paramètres
-    public = peut etre lue/modifiée en dehors (et dans) de la classe
-    protected = ne peut etre lue/modifiée en dehors de la classe, mais peut l'etre dans la classe et ses enfants
-    private = ne peut etre lue/modifiée en dehors de la classe, mais peut l'etre dans la classe elle meme
-    Les bonne pratique font que les paramètres sont generalement en private ou protected 
+class TroisiemeClasse{
+    /*
+    Paramètres
+
+    public = peut être lue/modifiée en dehors 
+     de la classe (et dedans, ainsi que dans les héritiers)
+
+    protected = ne peut être lue/modifiée en dehors 
+    de la classe, mais peut l'être dans la classe et 
+    ses enfants
+
+    private = ne peut être lue/modifiée en dehors 
+    de la classe, mais peut l'être dans la classe elle-même
+
+    Les bonnes pratiques font que les paramètres sont généralement en private (si il est inutile d'hériter cette classe) ou protected (si on veut hériter, ou utile d'hériter)
     */
-    public $param1 ="un";
+
+    public $param1 = "un";
     private $param2 = "deux";
-    protected $param3 ="trois";
-    
+    protected $param3 = "trois";
+
+    /*
+    ICI
+    */
+
+    const CONST_1 = "yes";
+
 }
