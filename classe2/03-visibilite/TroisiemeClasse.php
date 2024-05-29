@@ -19,11 +19,24 @@ class TroisiemeClasse{
     public $param1 = "un";
     private $param2 = "deux";
     protected $param3 = "trois";
+    // à partir de PHP 8.1 on peut utiliser le readonly :
+    // Il permet de pouvoir lire un paramètre public, sans pouvoir le modifier
+    // il doit être déclaré avec son type, et ne peut avoir de valeur par défaut.
+    public readonly int $param4;
 
     /*
-    ICI
+    constantes
     */
 
     const CONST_1 = "yes";
+
+    /*
+    Méthodes
+    */
+
+    // fonction qui permet d'initialiser le $param4
+    public function initParam4(){
+        $this->param4 = 25;
+    }
 
 }
