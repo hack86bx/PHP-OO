@@ -144,7 +144,7 @@ Il est important de noter que la déclaration d'une classe en PHP ne crée pas d
 $objet = new MaClasse();
 ```
 
-Dans cet exemple, nous avons instancié la classe MaClasse et stocké l'objet dans la variable $objet.
+Dans cet exemple, nous avons instancié la classe MaClasse qui est un objet stocké en mémoire, la variable $objet est une étiquette pointant vers celui-ci.
 
 
 ---
