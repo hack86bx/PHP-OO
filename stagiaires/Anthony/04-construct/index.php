@@ -5,7 +5,13 @@ session_start();
 require_once "PersoClasse02.php";
 
 if(isset($_POST["username"],$_POST["espece"])){
-    $perso = new PersoClasse02($_POST["username"],$_POST["espece"]);
+    try{
+        $perso = new PersoClasse02($_POST["username"],$_POST["espece"]);
+       
+    }catch(Exception $e){
+        die($e->getMessage());
+    }
+    
    
 }
 

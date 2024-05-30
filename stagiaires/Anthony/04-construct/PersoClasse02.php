@@ -22,7 +22,9 @@ class PersoClasse02{
          directement à l'instance de classe*/
         public function __construct(string $nom, string $espece )
         {
+            // Modification sans vérification de la propriété
             $this->name = $nom;
+            // modification grâce à un setteur (bonne pratique)
             $this->setEspece($espece);
         }
 
