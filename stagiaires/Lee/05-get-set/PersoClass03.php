@@ -6,7 +6,7 @@ class PersoClass03{
     protected ?int $hp;   // = null|int
     protected int $age;
     protected int $xp  = 0;
-    protected int $lvl = 1;
+    protected int $level;
     protected string $espece;
     private null|bool|int $alive;
 
@@ -21,18 +21,50 @@ class PersoClass03{
                                 int $age, 
                                 string $espece)  
     {
-        $this->name = $name;
+        $this->setName($name);
         $this->age  = $age;
         $this->setEspece($espece);
     }                           
     
     // Getters (aka Accessors)
+    // get name
     public function getName(): string
     {
         return $this->name;
     }
+    // get $age (int)
+    public function getAge(): int
+    {
+        return $this->age;
+    }
+    // get $xp (int)
+    public function getXp(): int
+    {
+        return $this->xp;
+    }
+    // get $level (int|null)
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+    // get $alive ()
+    public function getAlive(): null|bool|int
+    {
+        return $this->level;
+    }
+
 
     // Setters (aka Mutators)
+
+    public function setName(string $name) 
+    {
+        $name = strip_tags(trim($name));
+        if(strlen($name) < 3) {
+            throw new Exception("Name is too short", 333);
+        }
+        $this->name = $name;
+    }
+
     public function setEspece(string $espece)
     {
         if(in_array($espece, self::ESPECE_CHOICE)){
@@ -40,5 +72,25 @@ class PersoClass03{
         }else{
             throw new Exception("Tu fais quoi là!");
         }
+    }
+    // set hp
+    public function setHp ()
+    {
+
+    }
+    // set age
+    public function setAge ()
+    {
+
+    }
+    // set xp
+    public function setXp()
+    {
+
+    }
+    // set level
+    public function setLevel ()
+    {
+        
     }
 }
