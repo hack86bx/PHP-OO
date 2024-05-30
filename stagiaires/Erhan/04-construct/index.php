@@ -3,6 +3,8 @@ session_start();
 
 require_once "PersoClass02.php";
 
+$perso = "Pas encore de Perso";
+
 if(isset($_POST['username'], $_POST['espece'])){
     $perso = new PersoClass02($_POST['username'], $_POST['espece']);    
 }

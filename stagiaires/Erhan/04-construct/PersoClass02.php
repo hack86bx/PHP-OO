@@ -7,7 +7,7 @@ class PersoClass02{
     protected int $level = 1;
     protected string $espece;
     
-    // Contantes
+    // Constantes
     public const DE_DE_6 = 6;
     public const ESPECE_CHOICE = ["Humain", 
                                      "Saiyan",   
