@@ -30,11 +30,24 @@ echo $perso03A->getName();
 
 </code></pre>
 <?php
-$perso03A = new PersoClass03("Steve",16,"Humain");
-echo $perso03A->getName();
+try{
+    $perso03A = new PersoClass03("  <br>  Samuel  <br> ",16,"Humain");
+    echo $perso03A->getName();
+}catch(Exception $e){
+    echo $e->getCode(). " ".$e->getMessage();
+}
 ?>
 
 <?php
+
+var_dump($perso03A);
+
+// ici utiliser les setters pour modifier
+$perso03A->setName("Medhi");
+
+// ici les getters pour afficher
+echo $perso03A->getName();
+
 var_dump($perso03A);
 ?>
 </body>
