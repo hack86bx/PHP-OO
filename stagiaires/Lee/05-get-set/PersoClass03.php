@@ -24,6 +24,9 @@ class PersoClass03{
         $this->setName($name);
         $this->setAge($age);
         $this->setEspece($espece);
+        $this->setHp($espece);
+        $this->setXp($age);
+        $this->setLevel();
     }                           
     
     // Getters (aka Accessors)
@@ -53,6 +56,10 @@ class PersoClass03{
         return $this->level;
     }
 
+    public function getHp(): int
+    {
+        return $this->hp;
+    }
 
     // Setters (aka Mutators)
 
@@ -74,28 +81,56 @@ class PersoClass03{
         }
     }
     // set hp
-    public function setHp ()
+    public function setHp ($espece)
     {
-
+        $hp = 100;
+        switch ($espece) {
+            case "Humain" :
+                $hp=$hp;
+                break;
+            case "Elfe" :
+                $hp=$hp*0.75;
+                break;
+            case "Orc" :
+                $hp=$hp*2;
+                break;
+            case "Nain" :
+                $hp=$hp*1.5;
+        }
+        $this->hp = $hp;
     }
     // set age
     public function setAge ($age)
     {
         $age = filter_var($age, FILTER_SANITIZE_NUMBER_INT);
         if(intval($age) < 13) {
-            throw new Exception("Trop jeune pour ce jeu", 334);
+            throw new Exception("Trop jeune pour ce jeu", 336);
         }else {
             $this->age = $age;
         }
     }
     // set xp
-    public function setXp()
+    public function setXp($age)
     {
-
+        $age = filter_var($age, FILTER_SANITIZE_NUMBER_INT);
+        $xp = $age*100;
+        $this->xp = $xp;
     }
     // set level
     public function setLevel ()
     {
+        $xp=self::getXp();
+        $this->level = $xp/200;
+        
 
+    }
+
+    // set alive
+
+    public function setAlive()
+    {
+        $hp= self::getHp();
+        if ($hp <0) $this->alive = 0;
+        
     }
 }
