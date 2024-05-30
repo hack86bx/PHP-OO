@@ -44,6 +44,12 @@ var_dump($perso03A);
 
 // ici utiliser les setters pour modifier
 $perso03A->setName("Medhi");
+$perso03A->setAlive("alive");
+$perso03A->setHp("25");
+$perso03A->setAge("14");
+$perso03A->setXp("5");
+$perso03A->thisLevel("5");
+
 
 // ici les getters pour afficher
 echo $perso03A->getName();

@@ -65,15 +65,57 @@ class PersoClass03{
         }
 
         // setter de $hp (int) int positif uniquement, sinon erreur 335
+        public function setHp(int $hp) {
+            if ($hp <= 0) {
+                throw new Exception("Erreur 335", 335);
+            }
+            $this->hp = $hp;
+        }
 
         // setter de $age (int) doit être plus grand que 12 sinon erreur 336
+        public function setAge(int $age) {
+            if ($age <= 13) {
+                throw new Exception("Erreur 336", 336);
+            }
+            $this->age = $age;
+        }
 
         // setter de $xp (int) seulement un entier positif sinon 337
+        public function setXp(int $xp) {
+            if ($xp < 1) {
+                throw new Exception("Erreur 337", 337);
+            }
+            $this->xp = $xp;
+        }
 
         // setter de $level (int) seulement un entier positif sinon 338
+        public function setLevel(int $level){
+            if(strlen($level)<=2){
+                throw new Exception("erreur 338",338);
+            }
+            // si pas d'erreur
+            $this->level = $level;
+        }
 
 
         // getter de $alive (null bool ou int) - si rien = null - si 0 => false, si 1 => true, si plus de 1 => int
+        public function setAlive(int|bool|null $alive){
+            $alive = trim(strip_tags($alive));
+            if ($alive === null) {
+                $this->alive= null;
+            } elseif ($alive=== '0') {
+                $this->alive = false;
+            } elseif ($alive=== '1') {
+                $this->alive = 1;
+            } else {
+                $this->alive = $alive;
+            }
+            
+            // si pas d'erreur
+            $this->alive = $alive;
+        }
+    
+
 
         // Setter de espece
         public function setEspece(string $espece){
@@ -84,4 +126,4 @@ class PersoClass03{
             }
         }
 
-}
+    }
