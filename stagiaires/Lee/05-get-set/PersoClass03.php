@@ -22,7 +22,7 @@ class PersoClass03{
                                 string $espece)  
     {
         $this->setName($name);
-        $this->age  = $age;
+        $this->setAge($age);
         $this->setEspece($espece);
     }                           
     
@@ -58,7 +58,7 @@ class PersoClass03{
 
     public function setName(string $name) 
     {
-        $name = strip_tags(trim($name));
+        $name = trim(strip_tags($name));
         if(strlen($name) < 3) {
             throw new Exception("Name is too short", 333);
         }
@@ -79,9 +79,14 @@ class PersoClass03{
 
     }
     // set age
-    public function setAge ()
+    public function setAge ($age)
     {
-
+        $age = filter_var($age, FILTER_SANITIZE_NUMBER_INT);
+        if(intval($age) < 13) {
+            throw new Exception("Trop jeune pour ce jeu", 334);
+        }else {
+            $this->age = $age;
+        }
     }
     // set xp
     public function setXp()
@@ -91,6 +96,6 @@ class PersoClass03{
     // set level
     public function setLevel ()
     {
-        
+
     }
 }
