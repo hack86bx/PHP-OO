@@ -44,6 +44,7 @@ var_dump($perso03A);
 
 // ici utiliser les setters pour modifier
 $perso03A->setName("Medhi");
+$perso03A->setEspece("Elf");
 
 // ici les getters pour afficher
 echo $perso03A->getName();
