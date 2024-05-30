@@ -3,8 +3,15 @@ session_start();
 
 require_once "PersoClass02.php";
 
+$perso ="Pas encore de Perso";
+
 if(isset($_POST['username'],$_POST['espece'])){
-    $perso = new PersoClass02($_POST['username'],$_POST['espece']);
+    try{
+        $perso = new PersoClass02($_POST['username'],$_POST['espece']);
+        $perso2 = new PersoClass02(espece:"Cyborg",nom:"lulu");
+    }catch(Exception $e){
+        die($e->getMessage());
+    }
 }
 /* $perso02A = new PersoClass02("M");
 
@@ -38,6 +45,8 @@ var_dump($perso02A);
     </form>
     <?php
     var_dump($perso);
+    $perso->setEspece("Cyborg");
+    var_dump($perso,$perso2);
     ?>
 </body>
 </html>
