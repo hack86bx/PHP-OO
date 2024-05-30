@@ -53,7 +53,8 @@ class PersoClass03{
     // get $alive ()
     public function getAlive(): null|bool|int
     {
-        return $this->level;
+
+        return $this->alive;
     }
 
     public function getHp(): int
@@ -110,10 +111,14 @@ class PersoClass03{
         }
     }
     // set xp
-    public function setXp($age)
+    public function setXp()
     {
+        $age=self::getAge();
         $age = filter_var($age, FILTER_SANITIZE_NUMBER_INT);
         $xp = $age*100;
+        if ($xp < 0) {
+            throw new Exception('Xp too low',337);
+        }
         $this->xp = $xp;
     }
     // set level

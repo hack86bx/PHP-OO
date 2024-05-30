@@ -26,7 +26,7 @@ include_once 'PersoClass03.php';
     </pre>
 
     <?php
-        $perso03A = new PersoClass03("Steve", 16, "Elfe");
+        $perso03A = new PersoClass03("Steve", 40, "Humain");
     ?>
 
 
