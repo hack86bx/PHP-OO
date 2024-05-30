@@ -22,3 +22,7 @@ echo '<br>' . $secondeClasse->param2 . '<hr>';
 <?php
 $secondeClasse->param2 = 'aurevoir';
 echo '<br> Valeur de param2 : <strong>' .$secondeClasse->param2. '</strong>';
+var_dump($secondeClasse);
+
+$secondeClasse2 = new SecondeClasse();
+var_dump($secondeClasse2);
