@@ -22,7 +22,7 @@ Il s'agit donc de représenter ces objets et leurs relations. L'interaction entr
   - [1. Les classes et les objets](#1-les-classes-et-les-objets)
     - [1.1. Déclaration d'une classe](#11-déclaration-dune-classe)
       - [1.1.2 La visibilité des propriétés et des méthodes](#112-la-visibilité-des-propriétés-et-des-méthodes)
-      - A FAIRE : readonly (8.1)
+      - [1.1.2 La visibilité public readonly](#112-la-visibilité-public-readonly)
     - [1.2. Instanciation d'une classe](#12-instanciation-dune-classe)
     - [1.3. Accès aux propriétés et aux méthodes d'une classe depuis l'intérieur de la classe](#13-accès-aux-propriétés-et-aux-méthodes-dune-classe-depuis-lintérieur-de-la-classe)
     - [1.4. Accès aux propriétés et aux méthodes publiques d'une classe depuis l'extérieur de la classe pour lecture ET modification](#14-accès-aux-propriétés-et-aux-méthodes-publiques-dune-classe-depuis-lextérieur-de-la-classe-pour-lecture-et-modification)
@@ -135,6 +135,41 @@ Nous verrons plus loin l'utilité de ces différents niveaux d'accessibilité.
 
 ---
 
+#### 1.1.2 La visibilité public readonly
+
+**PHP 8.1** introduit un nouveau modificateur d'accès `public readonly` qui permet de déclarer une propriété publique en lecture seule. 
+
+Elle doit être typée et ne peut avoir de valeur par défaut. Elle ne peut être modifiée que dans le constructeur de la classe (ou une méthode de type setter)
+
+```php
+class MaClasse {
+    public readonly string $proprietePublique;
+    
+    public function __construct(string $valeur) {
+        $this->proprietePublique = $valeur;
+    }
+}
+```
+
+On peut donc accéder à la propriété publique en lecture seule :
+
+```php
+$objet = new MaClasse('Valeur');
+echo $objet->proprietePublique;
+```
+
+Mais on ne peut pas la modifier :
+
+```php
+// génère une erreur
+$objet->proprietePublique = 'Nouvelle valeur'; 
+```
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 1.2. Instanciation d'une classe
 
