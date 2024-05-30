@@ -23,7 +23,9 @@ class PersoClass02{
         // Le constructeur est une méthode magique qui permet lors de l'instanciation (avec le mot clef new) de passer des paramètres directement à l'instance de classe
         public function __construct(string $nom, string $espece)
         {
+            // modification sans vérification de la propriété
             $this->name = $nom;
+            // modification grâce à un setter (BP)
             $this->setEspece($espece);
         }
 
