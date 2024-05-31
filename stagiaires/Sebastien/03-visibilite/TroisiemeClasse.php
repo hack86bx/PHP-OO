@@ -24,14 +24,10 @@ class TroisiemeClasse{
     // il doit être déclaré avec son type, et ne peut avoir de valeur par défaut.
     public readonly int $param4;
 
-<<<<<<< HEAD
-=======
     /*
     constantes
     */
->>>>>>> d674225a5c6e4429c1cc085bc1eafb040cd0df64
 
-    
     const CONST_1 = "yes";
 
     /*
