@@ -35,13 +35,35 @@ class PersOOOn {
          Elle permet de passer des paramètres lors de la création de l'instance
          */
 
-        public function __construct(string $name, string $species, ?int $xp = 0, null|bool|int $hp = 100)
+        public function __construct(string $species2)
         {
-            // on peut remplir immédiatement les paramètres (mauvaise pratique)
-            $this->nomPerso = $name;
-            $this->especePerso = $species;
-            $this->xpPerso = $xp;
-            $this->hpPerso = $hp;
+            // on va utiliser les setters pour remplir les paramètres
+            $this->setEspecePerso($species2);
+
         }
+
+        /*
+        Setters (mutators)
+        Ils permettent de modifier des propriétés, quelque-soit la visibilité (plus rare pour les public, sauf avec readonly), tout en vérifiant la validité des données reçues.
+        Les setters sont toujours publiques (donc utilisable depuis l'extérieur de la classe et héritable)
+        On les écrits avec le mot clef 'set' suivi du nom de l'attribut mis en majuscule
+        $especePerso devient setEspecePerso()
+        */
+
+        /*
+            règles mise en place pour modifier $espacePerso
+        */
+        public function setEspecePerso(string $species): void // void signifie pas de retour (cette méthode est une procédure)
+        {
+            // si $species se touve dans la constante ESPECE_PERSO
+            // qui est un tableau (utilisation de in_array)
+            // self représente la class
+            if(in_array($species,self::ESPECE_PERSO)){
+                $this->especePerso = $species;
+            }else{
+                throw new Exception("Espèce inconnue !", 333);
+            }
+        }
+
 
 }
