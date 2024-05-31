@@ -35,10 +35,10 @@ class PersOOOn {
          Elle permet de passer des paramètres lors de la création de l'instance
          */
 
-        public function __construct(string $species)
+        public function __construct(string $species2)
         {
             // on va utiliser les setters pour remplir les paramètres
-            $this->setEspecePerso($species);
+            $this->setEspecePerso($species2);
 
         }
 
