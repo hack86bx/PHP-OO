@@ -82,7 +82,7 @@ $perso03A->setXp(20);
 echo $perso03A->getXp();
 echo "<hr>";
  
-$perso03A->setLevel(25);
+$perso03A->setLevel(25 );
 echo $perso03A->getLevel();
 echo "<hr>";
  
