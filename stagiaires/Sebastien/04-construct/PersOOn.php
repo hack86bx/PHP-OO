@@ -26,6 +26,22 @@ class PersOOn {
     "Gobelin"
    ];
 
+/*
+methodes -> equivalant fonctions
+*/
 
-   
+// methodes magic : constructeur
+
+// c'est une methode publique qui est appeler lors de l 'instantation d' un classe donc l 'utulisation du mots clew new.
+//elle permet de passer des parametre lors de la creation de l'instance
+
+public function __construct(string $name,string $species,?int $xp = 0,null|bool|int $hp =100)
+{
+    // on peut remplire immediatement les parametre (mauvais patrique)
+    $this->nomPerso = $name;
+    $this-> especePerso = $species;
+    $this-> xpPerso = $xp;
+    $this->hpPerso = $hp;
+}
+
 }
