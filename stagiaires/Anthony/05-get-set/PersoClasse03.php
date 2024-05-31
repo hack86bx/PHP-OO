@@ -26,7 +26,7 @@ class PersoClasse03{
          {
             // $this->name = $name;
             $this->setName($name); //correcte
-            $this->age = $age; // a remplacer par le setter
+            $this->setAge($age); 
             $this->setEspece($espece);
          }
 
@@ -127,7 +127,7 @@ class PersoClasse03{
          // setter de $alive (null, bool ou int) - si rien = null, si 0 = false, si 1 = true, si + de 1 = int
 
          public function setAlive(int|bool|null $alive){
-            $alive = trim(strip_tags(($alive)));
+           
        
             if(is_null($alive)){
                 $this->alive = null;
@@ -135,9 +135,11 @@ class PersoClasse03{
                 $this->alive = false;
             }else if($alive === 1){
                 $this->alive = true;
-            }
-            // si pas d'erreur 
+            }else{
+                
             $this->alive = $alive;
+            }
+            
          }
 
          // setter de espece
