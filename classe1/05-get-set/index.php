@@ -33,6 +33,7 @@ echo $perso03A->getName();
 try{
     $perso03A = new PersoClass03("  <br>  Samuel  <br> ",16,"Humain");
     echo $perso03A->getName();
+    
 }catch(Exception $e){
     echo $e->getCode(). " ".$e->getMessage();
 }
@@ -40,14 +41,35 @@ try{
 
 <?php
 
+echo $perso03A;
+
 var_dump($perso03A);
 
+try{
 // ici utiliser les setters pour modifier
-$perso03A->setName("Medhi");
-$perso03A->setEspece("Elf");
+    $perso03A->setName("Medhi");
+    $perso03A->setEspece("Elf");
+    $perso03A->setHp(3);
+    $perso03A->setAge(13);
+    $perso03A->setXp(26);
+    $perso03A->setLevel(1);
+    $perso03A->setAlive(true);
+}catch(Exception $e){
+    echo $e->getCode()." ".$e->getMessage();
+}
 
+try{
 // ici les getters pour afficher
-echo $perso03A->getName();
+    echo $perso03A->getName()."<br>";
+    echo $perso03A->getHp()."<br>";
+    echo $perso03A->getAge()."<br>";
+    echo $perso03A->getXp()."<br>";
+    echo $perso03A->getLevel()."<br>";
+    echo $perso03A->getEspece()."<br>";
+    echo $perso03A->getAlive()."<br>";
+}catch(Exception $e){
+    echo $e->getCode()." ".$e->getMessage();
+}
 
 var_dump($perso03A);
 ?>
