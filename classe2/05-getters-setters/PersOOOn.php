@@ -1,6 +1,6 @@
 <?php
 
-class PersOOn {
+class PersOOOn {
     /*
      Propriétés -> équivalent variables
      */
