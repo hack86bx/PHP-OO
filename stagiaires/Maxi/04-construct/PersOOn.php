@@ -7,5 +7,16 @@ class PersOOn {
     protected ?int $xpPerso; // xp du personnag, peut être null ou int (?int)
     //equivalent despuis PHP 8.0 : protected null|int $xpPerso;
     protected null|bool|string|int $hpPerso; //si plus de 2 types, utilisation des pipes (|)
-    
+
+
+    //constantes -> constantes
+    //les especes que seront acceptéesdans le jeu
+    public const ESPECE_PERSO = [
+        "Humain",
+        "Elfe",
+        "Nain",
+        "Orc",
+        "Hobbit",
+        "Gobelin",
+    ];
 }
