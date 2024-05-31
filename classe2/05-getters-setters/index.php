@@ -4,6 +4,15 @@ require_once "PersOOOn.php";
 
 $perso1 = "Pas encore de personnage";
 
+// si on a cliqué sur envoyer
+if(isset($_POST['especePerso'])){
+    try{
+        $perso1 = new PersOOOn(species2:$_POST['especePerso']);
+    }catch(Exception $e){
+        echo $e->getCode()." ".$e->getMessage();
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
