@@ -25,7 +25,7 @@ class PersOOn {
     //c'est une methode publice qui est appelée lors de l'instanciation de la classe donc l'utilisation du mot clé new.
     //Elle permet de passer des paramètres lors de la creation de la instance.
     public function __construct(string $name, string $species, ?int $xp = null, null|bool|string|int $hp =100) {
-        //on peut remplir les paramètres (mauvaise pratique)
+        //on peut remplir inmediatement les paramètres (mauvaise pratique)
         $this->nomPerso = $name;
         $this->especePerso = $species;
         $this->xpPerso = $xp;
