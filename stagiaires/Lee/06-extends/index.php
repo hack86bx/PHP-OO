@@ -10,7 +10,7 @@ $persoBase = new PersoBase("Mike",47,"Nain","Noir");
 //$persoBase->setAlive(25);
 $persoMagicien = new PersoMagicien("Lee",22,"Cyborg", 100);
 //$persoMagicien->setAlive(true);
-// $persoMagicienNoire = new PersoMagicienNoire("Emrah",30,"Humain","Noire","Nécromancien");
+ $persoMagicienNoire = new PersoMagicienNoire("Emrah",30,"Humain", 80, "Nécromancien");
 //$persoMagicien->setAlive(true);
 
 echo $persoBase->persoAvance();
@@ -22,4 +22,4 @@ echo "<br>";
 // la constante publique vient du parent, elle est héritée
 var_dump(PersoMagicien::ESPECE_CHOICE);
 
-var_dump($persoBase,$persoMagicien);
+var_dump($persoBase,$persoMagicien,$persoMagicienNoire);
