@@ -165,6 +165,8 @@ Mais on ne peut pas la modifier :
 $objet->proprietePublique = 'Nouvelle valeur'; 
 ```
 
+Cette nouvelle fonctionnalité permet de garantir que la propriété ne sera pas modifiée après son initialisation (sauf via un `setter`) et permet également d'éviter la création de méthodes de type `getter` pour les propriétés en lecture seule.
+
 ---
 
 [Menu de navigation](#menu-de-navigation)
