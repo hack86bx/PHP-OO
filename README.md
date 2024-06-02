@@ -143,9 +143,16 @@ Elle doit être typée et ne peut avoir de valeur par défaut. Elle ne peut êtr
 
 ```php
 class MaClasse {
+    // classe avec une propriété publique en lecture seule
     public readonly string $proprietePublique;
     
+    // constructeur mettant à jour la propriété publique via un setter
     public function __construct(string $valeur) {
+        $this->setProprietePublique($valeur);
+    }
+
+    // méthode de type setter pour modifier la propriété publique
+    public function setProprietePublique(string $valeur) {
         $this->proprietePublique = $valeur;
     }
 }
@@ -158,11 +165,17 @@ $objet = new MaClasse('Valeur');
 echo $objet->proprietePublique;
 ```
 
-Mais on ne peut pas la modifier :
+Mais on ne peut pas la modifier directement :
 
 ```php
 // génère une erreur
 $objet->proprietePublique = 'Nouvelle valeur'; 
+```
+
+On peut par contre la modifier via un setter :
+
+```php
+$objet->setProprietePublique('Nouvelle valeur');
 ```
 
 Cette nouvelle fonctionnalité permet de garantir que la propriété ne sera pas modifiée après son initialisation (sauf via un `setter`) et permet également d'éviter la création de méthodes de type `getter` pour les propriétés en lecture seule.
