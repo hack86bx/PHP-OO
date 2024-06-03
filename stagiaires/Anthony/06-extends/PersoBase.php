@@ -205,5 +205,5 @@ class PersoBase{
             return "Le personnage {$this} avance";
         }
 
-
 }
+
