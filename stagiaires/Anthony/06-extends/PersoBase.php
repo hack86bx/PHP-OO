@@ -1,8 +1,12 @@
 <?php
 
-class PersoClasse03{
+class PersoBase{
 
     // Propriétés
+    # créer les getters et setters(pas de force négative)
+    protected int $force = 100;
+    # créer les getters et setters(pas d'agilité' négative)
+    protected int $agilite = 100;
     protected string $name;   // typage en string 
     protected ?int $hp;      // typage en null ou int (pourrait rester vide à la création)
     protected int $age;      // typage en int 
@@ -28,7 +32,16 @@ class PersoClasse03{
             $this->setName($name); //correcte
             $this->setAge($age); 
             $this->setEspece($espece);
+            $this->setAlive(true);
          }
+
+        public function __toString()
+        {
+            // self::class -> la classe ou est déclarée la méthode __toString
+            //$this::class -> le nom de la classe qui a créé l'instance (objet)
+                return self::class." ".$this::class." ".$this->getName();
+    
+        }
 
 
          // Getters - Accessors
@@ -149,6 +162,11 @@ class PersoClasse03{
             }else{
                 throw new Exception("Espèces inconnu",334);
             }
+        }
+
+        // tous les personnages peuvent avancer
+        public function persoAvance(){
+            return "Le personnage {$this} avance";
         }
 
 
