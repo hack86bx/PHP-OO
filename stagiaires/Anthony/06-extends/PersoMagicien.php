@@ -17,18 +17,39 @@ class PersoMagicien extends PersoBase{
 
 
     // Méthodes
+
+    // getter de $age (int)
+    public function getMagiePoint(): int
+    {
+    return $this->magiePoint;
+    }   
+
+     // setter de magiePoint
+     public function setMagiePoint(int $magiePoint){
+        if(is_int($magiePoint)){
+            $this->magiePoint = $magiePoint;
+        }else{
+            throw new Exception("Cela doit être un int",339);
+        }
+    }
+
     
     // surcharge du constructeur, on peut ajouter des éléments
-    public function __construct( string $name, int $age, string $espece)
+    public function __construct( string $name, int $age, string $espece, int $magiePoint)
     {
         // on garde le constructeur du parent
       parent::__construct( $name,  $age,  $espece );
       // on ajoute ce que l'on souhaite au constructeur de l'enfant 
 
       #création du setter
-      $this->setMagiePoint() = 100;
+      $this->setMagiePoint($magiePoint);
     }    
     
    
 
 }
+
+
+
+
+  
