@@ -2,7 +2,6 @@
 class PersoBase{
     // Propriétés
     protected int $force = 100;
-
     protected int $agilite = 100;
     protected string $name; // typage en string
     protected ?int $hp; // typage en null ou int (pourrait rester vide à la création)
@@ -195,5 +194,6 @@ class PersoBase{
         public function persoAvance(){
             return "Le personnage {$this} avance";
         }
+
 
 }
