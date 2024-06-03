@@ -44,6 +44,18 @@ class PersoBase {
        
     //Getters - Accessors
 
+    //getters de $force
+    public function getForce(): int
+    {
+        return $this->force;
+    }
+
+    //getters de $agilite
+    public function getAgilite(): int
+    {
+        return $this->agilite;
+    }
+
     //getters de $name
     public function getName(): string
     {
@@ -90,6 +102,24 @@ class PersoBase {
 
 
     //Setters - Mutators
+
+    //setter de force
+    public function setForce(int $theforce): void
+    {
+        if($theforce<=0){
+            throw new Exception("La force ne peut pas être négative", 339);
+        }
+        $this->force = $theforce;        
+    }
+
+    //setter de agilite
+    public function setAgilite(int $theagilite): void
+    {
+        if($theagilite<=0){
+            throw new Exception("Int positif uniquement", 335);
+        }
+        $this->agilite = $theagilite;        
+    }
     
     //setter de name
     public function setName(string $thename){
