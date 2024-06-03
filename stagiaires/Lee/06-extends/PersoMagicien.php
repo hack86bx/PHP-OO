@@ -41,4 +41,6 @@ public function setMagiePoint(int|string $magPoint) : void
 
 
     
+
+
 }
