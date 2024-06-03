@@ -43,5 +43,6 @@ class PersoMagicienNoire extends PersoMagicien{
         $this->setMagieType($magieType);
     }
 
+
     
 }

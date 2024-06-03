@@ -18,19 +18,17 @@ class PersoMagicien extends PersoBase{
 
     // Méthodes
 
-    // getter de $age (int)
-    public function getMagiePoint(): int
+    // getter de $magiePoint (int)
+    public function getMagiePoint(): ?int
     {
     return $this->magiePoint;
     }   
 
      // setter de magiePoint
      public function setMagiePoint(int $magiePoint){
-        if(is_int($magiePoint)){
+       
             $this->magiePoint = $magiePoint;
-        }else{
-            throw new Exception("Cela doit être un int",339);
-        }
+        
     }
 
     
