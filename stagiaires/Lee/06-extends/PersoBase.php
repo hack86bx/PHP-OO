@@ -1,6 +1,10 @@
 <?php
-class PersoClass03{
+class PersoBase{
     // Propriétés
+    # créer les getters et setters (pas de force négative)
+    protected int $force = 100;
+    # créer les getters et setters (pas d'agilité négative)
+    protected int $agilite = 100;
     protected string $name; // typage en string
     protected ?int $hp; // typage en null ou int (pourrait rester vide à la création)
     protected int $age; // typage en int
@@ -25,11 +29,14 @@ class PersoClass03{
             $this->setName($name); // correcte
             $this->setAge($age);
             $this->setEspece($espece);
+            $this->setAlive(true);
         }
 
         public function __toString()
         {
-            return "Je suis une instance de ".self::class;
+            // self::class => la classe où est déclarée la méthode __toString
+            // $this::class => le nom de la classe qui a créé l'instance (objet)
+            return self::class." ".$this::class." ".$this->getName();
         }
 
 
@@ -129,7 +136,7 @@ class PersoClass03{
         }
 
 
-        // getter de $alive (null bool ou int) - si null = null - si 0 => false, si 1 => true, si plus de 1 => int
+        // setter de $alive (null bool ou int) - si null = null - si 0 => false, si 1 => true, si plus de 1 => int
         public function setAlive(int|bool|null $thealive): void
         {
             // if($thealive===null)
@@ -142,7 +149,7 @@ class PersoClass03{
             }else{
                 $this->alive = $thealive;
             }
-        }
+        } 
 
         // Setter de espece
         public function setEspece(string $espece){
@@ -151,6 +158,11 @@ class PersoClass03{
             }else{
                 throw new Exception("Tu fais quoi là!",334);
             }
+        }
+
+        // tous les personnages peuvent avancer
+        public function persoAvance(){
+            return "Le personnage {$this} avance";
         }
 
 }

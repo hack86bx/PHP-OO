@@ -23,13 +23,9 @@ class PersoClass03{
         public function __construct(string $name, int $age, string $espece){
             // $this->name = $name;
             $this->setName($name); // correcte
-            $this->setAge($age);
+            $this->age = $age; // à remplacer par le setter
+            // modification grâce à un setter (BP)
             $this->setEspece($espece);
-        }
-
-        public function __toString()
-        {
-            return "Je suis une instance de ".self::class;
         }
 
 
@@ -42,37 +38,16 @@ class PersoClass03{
         }
 
         // getter de $hp (ou int ou null)
-        public function getHp(): ?int
-        {
-            return $this->hp;
-        }
+
         // getter de $age (int)
-        public function getAge(): int
-        {
-            return $this->age;
-        }
 
         // getter de $xp (int)
-        public function getXp():int
-        {
-            return $this->xp;
-        }
 
         // getter de $level (ou int ou null)
-        public function getLevel():?int
-        {
-            return $this->level;
-        }
+
         // getter de $espece (string)
-        public function getEspece():string
-        {
-            return $this->espece;
-        }
+
         // getter de $alive (null bool ou int) - si rien = null - si 0 => false, si 1 => true, si plus de 1 => int
-        public function getAlive(): null|bool|int
-        {
-            return $this->alive;
-        }
 
         // Setters - Mutators
 
@@ -90,59 +65,57 @@ class PersoClass03{
         }
 
         // setter de $hp (int) int positif uniquement, sinon erreur 335
-        public function setHp(int $thehp){
-            if($thehp>0){
-                $this->hp = $thehp;
-            }else{
-                throw new Exception("HP doit être positif",335);
+        public function setHp(int $hp) {
+            if ($hp <= 0) {
+                throw new Exception("Erreur 335", 335);
             }
+            $this->hp = $hp;
         }
 
         // setter de $age (int) doit être plus grand que 12 sinon erreur 336
-        public function setAge(int $theage): void
-        {
-            if($theage > 12){
-                $this->age = $theage;
-            }else{
-                throw new Exception("Age doit être plus grand que 12",336);
+        public function setAge(int $age) {
+            if ($age <= 13) {
+                throw new Exception("Erreur 336", 336);
             }
+            $this->age = $age;
         }
 
         // setter de $xp (int) seulement un entier positif sinon 337
-        public function setXp(int $thexp): void
-        {
-            if($thexp>0){
-                $this->xp = $thexp;
-            }else{
-                throw new Exception("XP doit être plus grand que 0",337);
+        public function setXp(int $xp) {
+            if ($xp < 1) {
+                throw new Exception("Erreur 337", 337);
             }
+            $this->xp = $xp;
         }
 
         // setter de $level (int) seulement un entier positif sinon 338
-        public function setLevel(int $thelevel): void
-        {
-            if($thelevel >0){
-                $this->level = $thelevel;
-            }else{
-                throw new Exception("Le level doit être plus grand que 0",338);
+        public function setLevel(int $level){
+            if(strlen($level)<=2){
+                throw new Exception("erreur 338",338);
             }
+            // si pas d'erreur
+            $this->level = $level;
         }
 
 
-        // getter de $alive (null bool ou int) - si null = null - si 0 => false, si 1 => true, si plus de 1 => int
-        public function setAlive(int|bool|null $thealive): void
-        {
-            // if($thealive===null)
-            if(is_null($thealive)){
-                $this->alive = null;
-            }elseif($thealive===0){
+        // getter de $alive (null bool ou int) - si rien = null - si 0 => false, si 1 => true, si plus de 1 => int
+        public function setAlive(int|bool|null $alive){
+            $alive = trim(strip_tags($alive));
+            if ($alive === null) {
+                $this->alive= null;
+            } elseif ($alive=== '0') {
                 $this->alive = false;
-            }elseif($thealive===1){
-                $this->alive = true;
-            }else{
-                $this->alive = $thealive;
+            } elseif ($alive=== '1') {
+                $this->alive = 1;
+            } else {
+                $this->alive = $alive;
             }
+            
+            // si pas d'erreur
+            $this->alive = $alive;
         }
+    
+
 
         // Setter de espece
         public function setEspece(string $espece){
@@ -153,4 +126,4 @@ class PersoClass03{
             }
         }
 
-}
+    }
