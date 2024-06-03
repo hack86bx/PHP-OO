@@ -42,6 +42,11 @@ class PersoBase{
 
         // Getters - Accessors
 
+        //getter de force 
+        public function getForce () : int{
+            return $this->force;
+        }
+
         // getters de $name
         public function getName(): string 
         {

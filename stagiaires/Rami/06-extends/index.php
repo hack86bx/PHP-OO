@@ -8,6 +8,8 @@ require_once "PersoMagicienNoire.php";
 
 $persoBase = new PersoBase("Mike",47,"Nain","Noir");
 //$persoBase->setAlive(25);
+$persoBase->setForce(110);
+$persoBase->setAgilite(95);
 $persoMagicien = new PersoMagicien("Lee",22,"Cyborg","Noire");
 //$persoMagicien->setAlive(true);
 $persoMagicienNoire = new PersoMagicienNoire("Emrah",30,"Humain","Noire","Nécromancien");

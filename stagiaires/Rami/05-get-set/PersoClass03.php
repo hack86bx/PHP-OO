@@ -39,8 +39,10 @@ class PersoClass03{
 
         // getter de $hp (ou int ou null)
 
-        // getter de $age (int)
 
+
+        // getter de $age (int)
+       
         // getter de $xp (int)
 
         // getter de $level (ou int ou null)
