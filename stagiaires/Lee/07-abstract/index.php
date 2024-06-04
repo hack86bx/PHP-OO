@@ -1,6 +1,7 @@
 <?php
 
 require_once "PersoAbstract.php";
+require_once "PersoWarrior.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,15 @@ require_once "PersoAbstract.php";
     <p>An abstract class cannot be instanced. It is a model for child classes</p>
     
     <?php
-
+        var_dump(PersoAbstract::ESPECE_CHOICE);
     ?>
+    
+<?php
+    $persoWarrior1 = new PersoWarrior("Luke");
+    var_dump($persoWarrior1);
+
+?>
+
+
 </body>
 </html>
