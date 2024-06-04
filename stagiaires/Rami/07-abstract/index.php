@@ -10,8 +10,8 @@
     <p>Une classe abstraite ne peut être instanciée, elle va servir de modèle pour les classes enfants</p>
     <p>On peut hériter des propriétées ou méthodesq non abstraites</p>
     <?php
-    //$perso= new PersoAbstract();
-
+    <code>$perso= new PersoAbstract();
+</code> 
     
     ?>
 </body>
