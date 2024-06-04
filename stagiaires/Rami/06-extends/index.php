@@ -7,16 +7,12 @@ require_once "PersoMagicien.php";
 require_once "PersoMagicienNoire.php";
 
 $persoBase = new PersoBase("Mike",47,"Nain","Noir");
+//$persoBase->setAlive(25);
 $persoBase->setForce(110);
 $persoBase->setAgilite(95);
-echo "<p>Force: {$persoBase->getForce()} <br> Agilité : {$persoBase->getAgilite()}</p>";
-$persoMagicien = new PersoMagicien("Lee",22,"Cyborg");
+$persoMagicien = new PersoMagicien("Lee",22,"Cyborg","Noire");
 //$persoMagicien->setAlive(true);
-try{
-    $persoMagicienNoire = new PersoMagicienNoire("Emrah",30,"Humain","Nécromancien");
-}catch(Exception $e){
-    echo "Code : {$e->getCode()}<br>Message {$e->getMessage()}<br>";
-}
+$persoMagicienNoire = new PersoMagicienNoire("Emrah",30,"Humain","Noire","Nécromancien");
 //$persoMagicien->setAlive(true);
 
 echo $persoBase->persoAvance();
@@ -29,6 +25,3 @@ echo $persoMagicienNoire->persoAvance();
 var_dump(PersoMagicien::ESPECE_CHOICE);
 
 var_dump($persoBase,$persoMagicien,$persoMagicienNoire);
-
-$persoMagicienNoire->setMagieType("Sorcier");
-var_dump($persoMagicienNoire);
