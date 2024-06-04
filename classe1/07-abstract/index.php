@@ -1,5 +1,6 @@
 <?php
 require_once "PersoAbstract.php";
+require_once "PersoWarrior.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,17 @@ require_once "PersoAbstract.php";
     <?php
     //$perso = new PersoAbstract();
     var_dump(PersoAbstract::ESPECE_CHOICE);
+    ?>
+    <h3>Un héritier doit créer les méthodes abstaites</h3>
+    <code>$persoWarrior1 = new PersoWarrior("Luc");
+    $persoWarrior1->setHealthPoint(1000);
+    echo $persoWarrior1->getHealthPoint();
+    </code><br>
+    <?php
+    $persoWarrior1 = new PersoWarrior("Luc","Humain");
+    $persoWarrior1->setHealthPoint(1000);
+    echo $persoWarrior1->getHealthPoint();
+    var_dump($persoWarrior1);
     ?>
 </body>
 </html>
