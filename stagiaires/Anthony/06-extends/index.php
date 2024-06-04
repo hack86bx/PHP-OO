@@ -5,8 +5,10 @@ require_once "PersoBase.php";
 require_once "PersoMagicien.php";
 
 $persoBase = new PersoBase("Antho",22,"Sorcier");
-//$persoBase->setAlive(25);
-$persoMagicien = new PersoMagicien("Lee",22,"Humain","Noir");
+$persoBase->setForce(125);
+$persoBase->setAgilite(200);
+echo "<p>Force :{$persoBase->getForce()} <br> Agilité : {$persoBase->getAgilite()}</p>";
+$persoMagicien = new PersoMagicien("Lee",22,"Humain",300,"Noir");
 //$persoMagicien->setAlive(true);
 
 echo $persoBase->persoAvance();
