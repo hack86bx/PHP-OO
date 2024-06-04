@@ -12,8 +12,11 @@ require_once "PersoAbstract.php";
     <h1>class abstract</h1>
     <p>Une classe abstraite ne peut être instanciée, elle va servir de modèle pour les classes enfants</p><p>On peut hériter des propriétées ou méthodes non abtraites.</p>
     <code>//$perso = new PersoAbstract();</code>
+    <p>On peut par contre afficher une constante publique</p>
+    <code>var_dump(PersoAbstract::ESPECE_CHOICE);</code>
     <?php
     //$perso = new PersoAbstract();
+    var_dump(PersoAbstract::ESPECE_CHOICE);
     ?>
 </body>
 </html>
