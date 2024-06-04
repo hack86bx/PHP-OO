@@ -13,34 +13,56 @@ class PersoMagicienNoire extends PersoMagicien{
 
     // constantes
 
-    // $magieType ne peut être que
-    public const MAGIE_NOIRE = ["Nécromancien","Voodoo"];
+    // $magieType ne peut être que Nécromancien => magiePoint : 110 - Voodoo : 90
+    public const MAGIE_NOIRE = [
+        "Nécromancien",
+        "Voodoo",
+        "Sorcier",
+    ];
 
     // méthodes
 
-    // getter de $magieType 
-    public function getMagieType(): int
-    {
-    return $this->magieType;
-    }   
+    // Surcharge du constructeur on peut ajouter des éléments
+    public function __construct(string $name, int $age, string $espece, string $magieType="Voodoo"){
+        // on garde le constructeur du parent
+        parent::__construct($name,$age,$espece);
+        // on ajoute ce que l'on souhaite au constructeur de l'enfant
+        # création du setter et appel ici
+        $this->setMagieType($magieType);
 
-    // setter de magieType
-    public function setMagieType(null|string $magieType){
-        if(in_array($magieType, self::MAGIE_NOIRE)){
-            $this->magieType = $magieType;
+
+    }
+
+    // création du setter de magieType
+    public function setMagieType(string $themagieType): void
+    {
+        if(in_array($themagieType, self::MAGIE_NOIRE)){
+            $this->magieType = $themagieType;
+            $this->setMagiePointByType($this->magieType);
         }else{
-            throw new Exception("Type de magie inconnue",340);
+            throw new Exception("Type de Magicien noir inexistant ! Vous devez choisir entre {$this->viewMagieType()}",341);
         }
     }
 
-    // Surcharge du constructeur on peut ajouter des éléments
-    public function __construct(string $name, int $age, string $espece, int $magiePoint ,string $magieType="Voodoo"){
-        // on garde le constructeur du parent
-        parent::__construct($name,$age,$espece,$magiePoint,$magieType);
-        // on ajoute ce que l'on souhaite au constructeur de l'enfant
-        # création du setter et appel ici
-       // $this->magieType = $magieType; // à remplacer !
-        $this->setMagieType($magieType);
+    private function setMagiePointByType($type){
+        if($type==="Nécromancien"){
+            $this->setMagiePoint(110);
+        }elseif($type==="Voodoo"){
+            $this->setMagiePoint(90);
+        }else{
+            $this->setMagiePoint(100);
+        }
+    }
+
+    private function viewMagieType(): string
+    {
+        $sortie = "";
+        // tant qu'on a des types de magiciens
+        foreach(self::MAGIE_NOIRE as $item){
+            $sortie .= "$item, ";
+        }
+        // on retire les 2 derniers caractères (", " est inutile en fin de ligne)
+        return substr($sortie,0,-2);
     }
 
     
