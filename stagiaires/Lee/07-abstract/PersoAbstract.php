@@ -57,6 +57,8 @@ abstract class PersoAbstract {
     abstract public function setExperience(int $exp);
     abstract public function getExperience();
 
+    abstract public function attack($enemy);
+    abstract public function defence($enemy);
 
 
 }
