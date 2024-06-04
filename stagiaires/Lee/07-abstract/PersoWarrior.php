@@ -30,12 +30,12 @@ class PersoWarrior extends PersoAbstract{
 
     public function attack($enemy) 
     {
-        
+        return;
     }
 
     public function defence($enemy)
     {
-        
+        return;
     }
 
 }
