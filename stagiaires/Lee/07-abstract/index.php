@@ -19,7 +19,7 @@ require_once "PersoWarrior.php";
     ?>
     
 <?php
-    $persoWarrior1 = new PersoWarrior("Luke");
+    $persoWarrior1 = new PersoWarrior("Luke", 'Humain');
     var_dump($persoWarrior1);
 
 ?>
