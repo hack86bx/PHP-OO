@@ -35,7 +35,7 @@ abstract class PersoAbstract{
 
     // Plus courant, des méthodes qui seront obligatoires pour tous les persos
     abstract public function attack($enemy);
-    abstract public function defence($enemy);
+    abstract public function defence();
 
 
     // méthode __construct qui sera héritée
