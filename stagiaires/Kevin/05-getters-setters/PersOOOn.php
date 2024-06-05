@@ -73,7 +73,7 @@ class PersOOOn {
             throw new Exception("Le nom doit être compris entre 3 et 16 caractères.", 334);
             return;
         }
-        $this->nomPerso = $name;
+        $this->nomPerso = trim(strip_tags($name));
     }
 
     // Setter de $xpPerso (int positive)
