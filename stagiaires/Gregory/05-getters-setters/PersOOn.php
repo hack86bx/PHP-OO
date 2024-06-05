@@ -15,7 +15,7 @@ class PersOOn {
     "Gobelin",
   ];
 
-  public function __construct(string $species): void {
+  public function __construct(string $species) {
     $this->setEspece($species);
   }
 
@@ -26,8 +26,34 @@ class PersOOn {
       throw new Exception("Espece invalide");
     }
   }
+  public function setName(string $name): void {
+    if (preg_match('/^[a-zA-Z0-9 ]$/')){
+      $this->nom = $name;
+    }else {
+      throw new Exception("Nom invalide");
+    }
+  }
+  public function setXp(int $xp): void {
+    if ($xp > 0){
+      $this->xp = $xp;
+    }else {
+      throw new Exception("Quantité d'xp invalide");
+    }
+  }
+  public function setHp(int|bool $hp): void {
+    $this->hp = $hp;
+  }
 
   public function getEspece(): string {
     return $this->espece;
+  }
+  public function getName(): string {
+    return $this->nom;
+  }
+  public function getXp(): ?int {
+    return $this->xp;
+  }
+  public function getHp(): null|bool|int {
+    return $this->hp;
   }
 }
