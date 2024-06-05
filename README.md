@@ -38,6 +38,7 @@ Il s'agit donc de représenter ces objets et leurs relations. L'interaction entr
       - [2.4.2 Les méthodes et les propriétés privées](#242-les-méthodes-et-les-propriétés-privées)
       - [2.4.3 Les méthodes et les propriétés protégées](#243-les-méthodes-et-les-propriétés-protégées)
       - [2.4.4 Les méthodes et les propriétés publiques](#244-les-méthodes-et-les-propriétés-publiques)
+      - [2.4.5 La visibilité des constantes de classe](#245-la-visibilité-des-constantes-de-classe)
     - [2.5. La surcharge](#25-la-surcharge)
     - [2.6. Les classes abstraites](#26-les-classes-abstraites)
     - [2.7. Les méthodes et les propriétés statiques](#27-les-méthodes-et-les-propriétés-statiques)
@@ -143,9 +144,16 @@ Elle doit être typée et ne peut avoir de valeur par défaut. Elle ne peut êtr
 
 ```php
 class MaClasse {
+    // classe avec une propriété publique en lecture seule
     public readonly string $proprietePublique;
     
+    // constructeur mettant à jour la propriété publique via un setter
     public function __construct(string $valeur) {
+        $this->setProprietePublique($valeur);
+    }
+
+    // méthode de type setter pour modifier la propriété publique
+    public function setProprietePublique(string $valeur) {
         $this->proprietePublique = $valeur;
     }
 }
@@ -158,12 +166,20 @@ $objet = new MaClasse('Valeur');
 echo $objet->proprietePublique;
 ```
 
-Mais on ne peut pas la modifier :
+Mais on ne peut pas la modifier directement :
 
 ```php
 // génère une erreur
 $objet->proprietePublique = 'Nouvelle valeur'; 
 ```
+
+On peut par contre la modifier via un setter :
+
+```php
+$objet->setProprietePublique('Nouvelle valeur');
+```
+
+Cette nouvelle fonctionnalité permet de garantir que la propriété ne sera pas modifiée après son initialisation (sauf via un `setter`) et permet également d'éviter la création de méthodes de type `getter` pour les propriétés en lecture seule.
 
 ---
 
@@ -533,6 +549,57 @@ class MaClasseEnfant extends MaClasse {
 [Menu de navigation](#menu-de-navigation)
 
 ---
+
+##### 2.4.5 La visibilité des constantes de classe
+
+Il est possible de définir des constantes par classes qui restent identiques et non modifiables. La visibilité par défaut des constantes de classe est public.
+
+À partir de **PHP 7.1.0**, les modificateurs de visibilité sont autorisés sur les constantes de classe.
+
+Les constantes de classes peuvent être redéfinies par une classe enfant. À partir de PHP **8.1.0**, les constantes de classes ne peuvent pas être redéfinies par une classe enfant si elle a été défini comme `finale`.
+
+```php
+class MaClasse {
+    const MA_CONSTANTE = 'Valeur constante'; // publique par défaut
+    public const MA_CONSTANTE_PUBLIQUE = 'Valeur constante publique';
+    protected const MA_CONSTANTE_PROTEGEE = 'Valeur constante protégée';
+    private const MA_CONSTANTE_PRIVEE = 'Valeur constante privée';
+    // ne peut pas être redéfinie par une classe enfant
+    final const MA_CONSTANTE_FINALE = 'Valeur constante finale';
+}
+// fonctionnent
+echo MaClasse::MA_CONSTANTE;
+echo MaClasse::MA_CONSTANTE_PUBLIQUE;
+echo MaClasse::MA_CONSTANTE_FINALE;
+// génèrent une erreur
+echo MaClasse::MA_CONSTANTE_PROTEGEE;
+echo MaClasse::MA_CONSTANTE_PRIVEE;
+```
+
+A partir de **PHP 8.3**, les constantes de classes peuvent être typées:
+
+
+```php
+class MaClasse {
+    public const string|float MA_CONSTANTE = 'Valeur constante';
+}
+class MaClasseEnfant extends MaClasse {
+    // lors de la redéfinition, le(s) type(s) doi.t.vent être le(s) même(s)
+    public const string|float MA_CONSTANTE = 25.36;
+}
+
+echo MaClasse::MA_CONSTANTE;
+echo MaClasseEnfant::MA_CONSTANTE;
+
+
+```
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 
 #### 2.5. La surcharge
 
