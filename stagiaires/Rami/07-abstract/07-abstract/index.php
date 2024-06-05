@@ -25,17 +25,10 @@ require_once "PersoWarrior.php";
     echo $persoWarrior1->getHealthPoint();
     </code><br>
     <?php
-    $persoWarrior1 = new PersoWarrior("Lee","Humain");
-    $persoWarrior2 = new PersoWarrior("Emrah","Cyborg");
-    //$persoWarrior1->setHealthPoint(1000);
-    //echo $persoWarrior1->getHealthPoint();
-    var_dump($persoWarrior1,$persoWarrior2);
-
-    echo $persoWarrior1->attack($persoWarrior2)."<br>";
-    echo $persoWarrior2->attack($persoWarrior1)."<br>";
-    echo $persoWarrior1->attack($persoWarrior2)."<br>";
-    echo $persoWarrior2->attack($persoWarrior1)."<br>";
-    var_dump($persoWarrior1,$persoWarrior2);
+    $persoWarrior1 = new PersoWarrior("Luc","Humain");
+    $persoWarrior1->setHealthPoint(1000);
+    echo $persoWarrior1->getHealthPoint();
+    var_dump($persoWarrior1);
     ?>
 </body>
 </html>
