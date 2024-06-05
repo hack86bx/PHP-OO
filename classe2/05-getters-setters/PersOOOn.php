@@ -40,7 +40,7 @@ class PersOOOn {
             // on va utiliser les setters pour remplir les paramètres
             $this->setEspecePerso($species2);
             // setter pour le nom
-            #
+            $this->setNomPerso($name);
         }
 
         /*
@@ -66,7 +66,21 @@ class PersOOOn {
             }
         }
 
-        // setter de $nomPerso (protection + 3 à 16 caractères)
+        // setter de $nomPerso (protection + de 3 à 16 caractères)
+        public function setNomPerso(string $theName): void
+        {
+            // on retire les tags puis les espaces avant et arrière
+            $theName = trim(strip_tags($theName));
+            // si $theName est plus petit que 3 caractères
+            $nameLength = strlen($theName); // prise de longueur
+            if($nameLength<3){
+                throw new Exception("Le nom est trop court !", 334);
+            }elseif($nameLength>16){
+                throw new Exception("Le nom est trop long !",335);
+            }
+            $this->nomPerso = $theName;
+
+        }
 
         // setter de $xpPerso (int positif)
 
@@ -93,5 +107,7 @@ class PersOOOn {
         // getter de $xpPerso (null ou int)
 
         // getter de $hpPerso (bool|null|int)
+
+        
 
 }
