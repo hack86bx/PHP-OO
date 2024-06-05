@@ -66,21 +66,24 @@ class PersoWarrior extends PersoAbstract{
 
         // ATTAQUE
         $attackPoints = $this->getAgility();
-        $text = "<h4>Attaque de {$this->getName()}</h4> <p> : Agilité = $attackPoints<br>";
+        $text = "<h4>Attaque de {$this->getName()}</h4> <p>Agilité = $attackPoints<br>";
         // lancé de 3 dés de 20
         $throwDices = $this->throwBigDice(3);
         $text .= "3 Dés de 20 faces : ";
+        $desPoints = 0;
         foreach ($throwDices as $key => $value){
-            $attackPoints += $value;
-            $text .= "dés $key = $value - ";
+            $desPoints += $value;
+            $text .= "dé $key = $value - ";
         }
-        $text .= "<br> Points d'attaques de {$this->getName()} : $attackPoints<br>";
+        $attackPoints += $desPoints;
+        $text .="Total des dés = $desPoints<br>";
+        $text .= "<br> Points d'attaques de {$this->getName()} : $attackPoints</p>";
 
 
         // défense de l'ennemi
         $defenseEnemy = $enemy->defence();
 
-        return $text.$defenseEnemy["texte"];
+        return $text.$defenseEnemy["texte"]."<hr>";
 
     }
 
@@ -89,15 +92,18 @@ class PersoWarrior extends PersoAbstract{
     {
         // DEFENCE
         $defencePoints = $this->getAgility();
-        $text = "<p>Défense de {$this->getName()} : Agilité = $defencePoints<br>";
+        $text = "<h4>Défense de {$this->getName()}</h4><p>Agilité = $defencePoints<br>";
         // lancé de 3 dés de 20
         $throwDices = $this->throwBigDice(3);
         $text .= "3 Dés de 20 faces : ";
+        $desPoints = 0;
         foreach ($throwDices as $key => $value){
-            $defencePoints += $value;
-            $text .= "dés $key = $value - ";
+            $desPoints += $value;
+            $text .= "dé $key = $value - ";
         }
-        $text .= "<br> Points de défense de {$this->getName()} : $defencePoints";
+        $defencePoints += $desPoints;
+        $text .="Total des dés = $desPoints<br>";
+        $text .= "<br> Points de défense de {$this->getName()} : $defencePoints</p>";
         return(["points"=>$defencePoints, "texte"=>$text]);
     }
 
