@@ -5,9 +5,9 @@ require_once "PersOOOn.php";
 $perso1 = "Pas encore de personnage";
 
 // si on a cliqué sur envoyer
-if(isset($_POST['especePerso'])){
+if(isset($_POST['especePerso'],$_POST['nomPerso'])){
     try{
-        $perso1 = new PersOOOn(species2:$_POST['especePerso']);
+        $perso1 = new PersOOOn(species2:$_POST['especePerso'],name:$_POST['nomPerso']);
     }catch(Exception $e){
         echo $e->getCode()." ".$e->getMessage();
     }
@@ -24,6 +24,9 @@ if(isset($_POST['especePerso'])){
 <body>
     <h1>Choix d'un PersOOOn</h1>
     <form action="" method="POST" name="perso">
+        <p>Utilisez un nom de minimum 3 et maximum 16 caractères</p>
+        <input type="text" name="nomPerso" placeholder="Votre nom de personnage" required>
+        <p>Choisissez votre espece</p>
         <select name="especePerso">
             <option value="nimporte">nimporte</option>
             <?php
@@ -40,7 +43,8 @@ if(isset($_POST['especePerso'])){
         <input type="submit" value="Créer le personnage" />
     </form>
     <?php
-
+    // appel du getter
+    echo $perso1->getEspecePerso();
     var_dump($_POST,$perso1);
 
 ?>
