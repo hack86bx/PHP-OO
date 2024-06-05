@@ -5,9 +5,14 @@ require_once "PersOOOn.php";
 $perso1 = "Pas encore de personnage";
 
 // si on a cliqué sur envoyer
-if(isset($_POST['especePerso'],$_POST['nomPerso'])){
+if(isset($_POST['especePerso'], $_POST['nomPerso'], $_POST['xpPerso'], $_POST['hpPerso'])){
     try{
-        $perso1 = new PersOOOn(species2:$_POST['especePerso'],name:$_POST['nomPerso']);
+        $perso1 = new PersOOOn(
+            species2:$_POST['especePerso'],
+            name:$_POST['nomPerso'],
+            xp:$_POST['xpPerso'],
+            hp:$_POST['hpPerso']
+        );
     }catch(Exception $e){
         echo $e->getCode()." ".$e->getMessage();
     }
@@ -40,12 +45,18 @@ if(isset($_POST['especePerso'],$_POST['nomPerso'])){
                 endforeach;
             ?>
         </select>
+        <p>Entrez votre XP</p>
+        <input type="number" name="xpPerso" placeholder="Votre XP" required>
+        <p>Entrez vos HP</p>
+        <input type="number" name="hpPerso" placeholder="Votre HP" required>
         <input type="submit" value="Créer le personnage" />
     </form>
     <?php
-    // appel du getter
-    echo $perso1->getEspecePerso();
-    var_dump($_POST,$perso1);
+    if (is_object($perso1)) {
+        // appel du getter
+        echo $perso1->getEspecePerso();
+    }
+    var_dump($_POST, $perso1);
 
 ?>
 </body>
