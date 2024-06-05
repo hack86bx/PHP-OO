@@ -25,6 +25,9 @@ if (isset($_POST['especePerso'])) {
 <body>
     <h1>Choix d'un PersOOOn</h1>
     <form action="" method="post" name="perso">
+        <p>Utilisez un nom de min 3 et max 16 caractères</p>
+        <input type="text" name="nomPerso" placeholder="Nom du personnage" required>
+        <p>Selectionez votrez espèce</p>
         <select name="especePerso" id="">
             <option value="nimporte">nimporte</option>
             <?php

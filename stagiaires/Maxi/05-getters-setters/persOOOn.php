@@ -47,5 +47,25 @@ class PersOOOn {
             throw new Exception("Espèce inconnue!", 333);
         }
     }
+    //Setter pour $especePerso
+
+    // Setter pour $nomPerso (protection + 3 à 16 caracteres)
+    public function setNomPerso(string $nom): void
+    {
+        $this->nomPerso = $nom;
+    }
+
+    //Setter pour $xpPerso
+
+    //Stter pour $hpPerso (bool )
+
+    /* Getters - accessorsPermet de recupere des parametres generalment private ou protected
+    en dehors de la classe. On utilise le nom de la propriete auquel on prefixe avec le mot vlef get suivi de la première lettre de en majuscule
+    pour $especePerso, on utilise getEspecePerso()
+    */
+    public function getEspecePerso(): string
+    {
+        return $this->especePerso;
+    }
 
 }
