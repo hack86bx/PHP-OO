@@ -71,6 +71,5 @@ if(isset($_POST['especePerso'],$_POST['nomPerso'], $_POST['xpPerso'], $_POST['hp
     var_dump($perso1);
     ?>
 
-?>
 </body>
 </html>
