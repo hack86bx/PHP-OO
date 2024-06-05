@@ -40,7 +40,6 @@ class PersOOOn {
              //! on va utiliser les setters pour remplir les paramètres
              $this->setEspecePerso($species2);
              $this->setNomPerso($name);
-             //! on peut aussi utiliser les setters pour les autres propriétés
              $this->setXpPerso($xp);
              $this->sethpPerso($hp);
          }
