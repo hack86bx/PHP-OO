@@ -30,7 +30,7 @@ class PersOOn {
     }
   }
   public function setName(string $name): void {
-    if (preg_match('/^[a-zA-Z0-9 ]+$/', $name)){
+    if (preg_match('/^[a-zA-Z0-9 ]+$/', $name) && strlen($name) >= 3 && strlen($name) <= 16){
       $this->nom = $name;
     }else {
       throw new Exception("Nom invalide");
