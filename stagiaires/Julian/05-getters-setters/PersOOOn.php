@@ -69,16 +69,17 @@ class PersOOOn {
         }
 
         // setter de $nomPerso (protection + 3 à 16 caractères)
+        // with trim and htmlspecialcharacters and striptags
 
         public function setNomPerso(string $name): void
         {
+            $name = trim(htmlspecialchars(strip_tags($name)));
             if(strlen($name) >= 3 && strlen($name) <= 16){
                 $this->nomPerso = $name;
             }else{
                 throw new Exception("Le nom doit être compris entre 3 et 16 caractères", 666);
             }
         }
-
 
         // setter de $xpPerso (int positif)
 
