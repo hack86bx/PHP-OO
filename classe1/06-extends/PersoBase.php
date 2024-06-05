@@ -1,6 +1,8 @@
 <?php
-class PersoClass03{
+class PersoBase{
     // Propriétés
+    protected int $force = 100;
+    protected int $agilite = 100;
     protected string $name; // typage en string
     protected ?int $hp; // typage en null ou int (pourrait rester vide à la création)
     protected int $age; // typage en int
@@ -25,17 +27,32 @@ class PersoClass03{
             $this->setName($name); // correcte
             $this->setAge($age);
             $this->setEspece($espece);
+            $this->setAlive(true);
         }
 
         public function __toString()
         {
-            return "Je suis une instance de ".self::class;
+            // self::class => la classe où est déclarée la méthode __toString
+            // $this::class => le nom de la classe qui a créé l'instance (objet)
+            return self::class." ".$this::class." ".$this->getName();
         }
 
 
         // Getters - Accessors
 
-        // getters de $name
+        // getter de $force
+        public function getForce():int
+        {
+            return $this->force;
+        }
+
+        // getter de $agilite
+        public function getAgilite():int
+        {
+            return $this->agilite;
+        }
+
+        // getter de $name
         public function getName(): string 
         {
             return $this->name;
@@ -75,6 +92,26 @@ class PersoClass03{
         }
 
         // Setters - Mutators
+
+        // Setter de force
+        public function setForce(int $theforce): void
+        {
+            if($theforce>=0){
+                $this->force = $theforce;
+            }else{
+                throw new Exception("La force ne peut être négative",339);
+            }
+        }
+
+        // Setter de agilite
+        public function setAgilite(int $theagilite): void
+        {
+            if($theagilite>=0){
+                $this->agilite = $theagilite;
+            }else{
+                throw new Exception("L'agilité ne peut être négative",340);
+            }
+        }
 
         // Setter de name
         // le nom doit être protégé contre les
@@ -129,7 +166,7 @@ class PersoClass03{
         }
 
 
-        // getter de $alive (null bool ou int) - si null = null - si 0 => false, si 1 => true, si plus de 1 => int
+        // setter de $alive (null bool ou int) - si null = null - si 0 => false, si 1 => true, si plus de 1 => int
         public function setAlive(int|bool|null $thealive): void
         {
             // if($thealive===null)
@@ -152,5 +189,11 @@ class PersoClass03{
                 throw new Exception("Tu fais quoi là!",334);
             }
         }
+
+        // tous les personnages peuvent avancer
+        public function persoAvance(){
+            return "Le personnage {$this} avance";
+        }
+
 
 }
