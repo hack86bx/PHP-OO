@@ -8,15 +8,15 @@ abstract class PersoAbstract{
     protected string $espece;
 
     // constantes publiques
-    public const array ESPECE_CHOICE = [
+    public const  ESPECE_CHOICE = [
         "Humain",
         "Saiyan",
         "Elf",
         "Nain",
         "Cyborg",
     ];
-    protected const int THROW_DICE_SMALL = 6;
-    protected const int THROW_DICE_BIG = 20;
+    protected const  THROW_DICE_SMALL = 6;
+    protected const  THROW_DICE_BIG = 20;
 
     // Méthodes
 
