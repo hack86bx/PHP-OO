@@ -15,8 +15,9 @@ class PersOOn {
     "Gobelin",
   ];
 
-  public function __construct(string $species) {
+  public function __construct(string $species, string $name) {
     $this->setEspece($species);
+    $this->setName($name);
   }
 
   public function setEspece(string $name): void {
