@@ -1,16 +1,19 @@
 <?php
 
 class PersOOOn {
-    //propriétés -> variables
+    /*
+     Propriétés -> équivalent variables
+     */
     private string $especePerso;
     private string $nomPerso;
-    protected ?int $xpPerso; // xp du personnag, peut être null ou int (?int)
-    //equivalent despuis PHP 8.0 : protected null|int $xpPerso;
-    protected null|bool|string|int $hpPerso; //si plus de 2 types, utilisation des pipes (|)
+    protected ?int $xpPerso; // xp du personnage, peut être null ou int (?int)
+    // équivalent depuis PHP 8.0 (Union type) : protected null|int $xpPerso;
+    protected null|bool|int $hpPerso; // si plus de 2 types, utilisation des pipes
 
-
-    //constantes -> équivalent constantes
-    //les especes que seront acceptéesdans le jeu
+    /*
+    Constantes -> équivalent constantes
+    */
+    // Les espèces qui seront acceptées dans le jeu
     public const ESPECE_PERSO = [
         "Humain",
         "Elfe",
@@ -19,53 +22,106 @@ class PersOOOn {
         "Hobbit",
         "Gobelin",
     ];
-    //methodes -> equivalent des fontcations
 
-    //methode magique : constructeur
-    //c'est une methode publice qui est appelée lors de l'instanciation de la classe donc l'utilisation du mot clé new.
-    //Elle permet de passer des paramètres lors de la creation de la instance.
-    public function __construct(string $species) {
-        //on utiliser les setter pour remplir les paramètres 
-        $this->setEspecePerso($species);
-
-    }
     /*
-    Setters (mutetors)
-    ils permettent de modifier des proprietes quelque soit la visibilité (plus rare pour les publics, sauf avec readonly), tout en verifiant la validité des données reçues. Les setters sont toujours des méthodess publics (donc utilisables deuis l'exterieur de la classe et heritables)
-    On les ecrit avec le mot clef 'set' suivi du nom de l'attribut mis en majuscule '$especePerso' devient 'setEspecePerso()'
+    Méthodes -> équivalent fonctions
     */
 
-    /*regle mise en place pour modifier $especePerso*/
+        /*
+         Méthode Magique : constructeur
 
-    public function setEspecePerso(string $species): void // void signifie que la fonction ne retourne rien (cette methode est une procedure)
-    { 
-        //si $especies se trouve dans la constante ESPECE_PERSO qui est un tableau (utilisation de in_array)
-        //self represent la classe 
-        if (in_array($species, self::ESPECE_PERSO)) {
-            $this->especePerso = $species;
-        } else {
-            throw new Exception("Espèce inconnue!", 333);
+         C'est une méthode publique qui est appelée lors de l'instanciation d'une classe
+         donc l'utilisation du mot clef new.
+         Elle permet de passer des paramètres lors de la création de l'instance
+         */
+
+        public function __construct(string $species2, string $name)
+        {
+            // on va utiliser les setters pour remplir les paramètres
+            $this->setEspecePerso($species2);
+            // setter pour le nom
+            #
         }
-    }
-    //Setter pour $especePerso
 
-    // Setter pour $nomPerso (protection + 3 à 16 caracteres)
-    public function setNomPerso(string $nom): void
-    {
-        $this->nomPerso = $nom;
-    }
+        /*
+        Setters (mutators)
+        Ils permettent de modifier des propriétés, quelque-soit la visibilité (plus rare pour les public, sauf avec readonly), tout en vérifiant la validité des données reçues.
+        Les setters sont toujours publiques (donc utilisable depuis l'extérieur de la classe et héritable)
+        On les écrits avec le mot clef 'set' suivi du nom de l'attribut mis en majuscule
+        $especePerso devient setEspecePerso() :
+        */
 
-    //Setter pour $xpPerso
+        /*
+            règles mise en place pour modifier $espacePerso
+        */
+        public function setEspecePerso(string $species): void// void signifie pas de retour (cette méthode est une procédure)
+        {
+            // si $species se touve dans la constante ESPECE_PERSO
+            // qui est un tableau (utilisation de in_array)
+            // self représente la class
+            if(in_array($species,self::ESPECE_PERSO)){
+                $this->especePerso = $species;
+            }else{
+                throw new Exception("Espèce inconnue !", 333);
+            }
+        }
 
-    //Stter pour $hpPerso (bool )
+        // setter de $nomPerso (protection + 3 à 16 caractères)
+        public function setNomPerso(string $nom): void
+        {
+            $this->nomPerso = $nom;
+        }
 
-    /* Getters - accessorsPermet de recupere des parametres generalment private ou protected
-    en dehors de la classe. On utilise le nom de la propriete auquel on prefixe avec le mot vlef get suivi de la première lettre de en majuscule
-    pour $especePerso, on utilise getEspecePerso()
-    */
-    public function getEspecePerso(): string
-    {
-        return $this->especePerso;
-    }
+        // setter de $xpPerso (int positif)
+        public function setXpPerso(int $xp): void
+        {
+            if($xp >= 0){
+                $this->xpPerso = $xp;
+            }else{
+                throw new Exception("Xp ne peut pas être négatif !", 333);
+            }
+        }
 
+        // setter de $hpPerso (bool pour false ou un int)
+        public function setHpPerso(bool|int $hp): void
+        {
+            if($hp === false || $hp >= 0){
+                $this->hpPerso = $hp;
+            }else{
+                throw new Exception("Hp ne peut pas être négatif ou égal à false !", 333);
+            }
+        }   
+
+
+        /*
+        Getters - accessors
+        Permet de récupérer des propriétés généralement private ou protected
+        en dehors de la classe.
+        On utilise le nom de la propriété auquel on préfixe avec le mot clef
+        get suivi de la première lettre en majuscule :
+        pour $especePerso => getEspecePerso()
+        */
+
+        // getter de $especePerso
+        public function getEspecePerso(): string
+        {
+            return $this->especePerso;
+        }
+
+        // getter de $nomPerso (string))
+        public function getNomPerso(): string
+        {
+            return $this->nomPerso;
+        }
+
+        // getter de $xpPerso (null ou int)
+        public function getXpPerso(): ?int
+        {
+            return $this->xpPerso;
+        }
+        // getter de $hpPerso (bool|null|int)
+        public function getHpPerso(): bool|null|int
+        {
+            return $this->hpPerso;
+        }
 }
