@@ -69,6 +69,7 @@ class PersOOOn {
     // Setter de $nomPerso (protection + 3 à 16 caractères)
     public function setNomPerso(string $name): void
     {
+        $name = trim($name);
         if(strlen($name) < 3 || strlen($name) > 16){
             throw new Exception("Le nom doit être compris entre 3 et 16 caractères.", 334);
             return;
