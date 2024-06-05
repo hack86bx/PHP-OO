@@ -1,8 +1,12 @@
 <?php
 
-class PersoClasse03{
+class PersoBase{
 
     // Propriétés
+ 
+    protected int $force = 100;
+   
+    protected int $agilite = 100;
     protected string $name;   // typage en string 
     protected ?int $hp;      // typage en null ou int (pourrait rester vide à la création)
     protected int $age;      // typage en int 
@@ -28,10 +32,33 @@ class PersoClasse03{
             $this->setName($name); //correcte
             $this->setAge($age); 
             $this->setEspece($espece);
+            $this->setAlive(true);
          }
+
+        public function __toString()
+        {
+            // self::class -> la classe ou est déclarée la méthode __toString
+            //$this::class -> le nom de la classe qui a créé l'instance (objet)
+                return self::class." ".$this::class." ".$this->getName();
+    
+        }
 
 
          // Getters - Accessors
+
+          // getter de $force
+          public function getForce(): int
+          {
+              return $this->force;
+          }
+
+           // getter de $agilité
+         public function getAgilite(): int
+         {
+             return $this->agilite;
+         }
+
+
 
          // getter de $name
          public function getName(): string
@@ -73,6 +100,28 @@ class PersoClasse03{
 
 
          // Setters - Mutators
+         // setter de force
+         public function setForce(int $force): void{
+            
+            if(($force)<0){
+                throw new Exception("Doit être un entier positif",341);
+            }
+            // si pas d'erreur 
+            $this->force = $force;
+         }
+
+           // setter d'agilite
+           public function setAgilite(int $agilite): void{
+            
+            if(($agilite)<0){
+                throw new Exception("Doit être un entier positif",342);
+            }
+            // si pas d'erreur 
+            $this->agilite = $agilite;
+         }
+
+
+
 
          // Setter de $name
          // le nom doit être protégé contre les espaces avant et arrière 
@@ -151,5 +200,10 @@ class PersoClasse03{
             }
         }
 
+        // tous les personnages peuvent avancer
+        public function persoAvance(){
+            return "Le personnage {$this} avance";
+        }
 
 }
+
