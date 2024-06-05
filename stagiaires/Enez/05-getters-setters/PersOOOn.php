@@ -61,6 +61,7 @@ class PersOOOn {
             // si $species se touve dans la constante ESPECE_PERSO
             // qui est un tableau (utilisation de in_array)
             // self représente la class
+            $name = trim(strip_tags($species));
             if(in_array($species,self::ESPECE_PERSO)){
                 $this->especePerso = $species;
             }else{
@@ -97,7 +98,9 @@ class PersOOOn {
             throw new Exception("HP invalide !", 333);
             }
         }
+
         
+
 
 
 }
