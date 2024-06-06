@@ -576,7 +576,7 @@ echo MaClasse::MA_CONSTANTE_PROTEGEE;
 echo MaClasse::MA_CONSTANTE_PRIVEE;
 ```
 
-A partir de **PHP 8.3**, les constantes de classes peuvent être typées:
+À partir de **PHP 8.3**, les constantes de classes peuvent être typées :
 
 
 ```php
