@@ -1,9 +1,7 @@
 <?php
 class PersoBase{
     // Propriétés
-    # créer les getters et setters (pas de force négative)
     protected int $force = 100;
-    # créer les getters et setters (pas d'agilité négative)
     protected int $agilite = 100;
     protected string $name; // typage en string
     protected ?int $hp; // typage en null ou int (pourrait rester vide à la création)
@@ -42,7 +40,19 @@ class PersoBase{
 
         // Getters - Accessors
 
-        // getters de $name
+        // getter de $force
+        public function getForce():int
+        {
+            return $this->force;
+        }
+
+        // getter de $agilite
+        public function getAgilite():int
+        {
+            return $this->agilite;
+        }
+
+        // getter de $name
         public function getName(): string 
         {
             return $this->name;
@@ -82,6 +92,26 @@ class PersoBase{
         }
 
         // Setters - Mutators
+
+        // Setter de force
+        public function setForce(int $theforce): void
+        {
+            if($theforce>=0){
+                $this->force = $theforce;
+            }else{
+                throw new Exception("La force ne peut être négative",339);
+            }
+        }
+
+        // Setter de agilite
+        public function setAgilite(int $theagilite): void
+        {
+            if($theagilite>=0){
+                $this->agilite = $theagilite;
+            }else{
+                throw new Exception("L'agilité ne peut être négative",340);
+            }
+        }
 
         // Setter de name
         // le nom doit être protégé contre les
@@ -164,5 +194,6 @@ class PersoBase{
         public function persoAvance(){
             return "Le personnage {$this} avance";
         }
+
 
 }

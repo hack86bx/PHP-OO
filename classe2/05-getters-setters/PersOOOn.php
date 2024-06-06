@@ -35,11 +35,12 @@ class PersOOOn {
          Elle permet de passer des paramètres lors de la création de l'instance
          */
 
-        public function __construct(string $species2)
+        public function __construct(string $species2, string $name)
         {
             // on va utiliser les setters pour remplir les paramètres
             $this->setEspecePerso($species2);
-
+            // setter pour le nom
+            $this->setNomPerso($name);
         }
 
         /*
@@ -47,13 +48,13 @@ class PersOOOn {
         Ils permettent de modifier des propriétés, quelque-soit la visibilité (plus rare pour les public, sauf avec readonly), tout en vérifiant la validité des données reçues.
         Les setters sont toujours publiques (donc utilisable depuis l'extérieur de la classe et héritable)
         On les écrits avec le mot clef 'set' suivi du nom de l'attribut mis en majuscule
-        $especePerso devient setEspecePerso()
+        $especePerso devient setEspecePerso() :
         */
 
         /*
             règles mise en place pour modifier $espacePerso
         */
-        public function setEspecePerso(string $species): void // void signifie pas de retour (cette méthode est une procédure)
+        public function setEspecePerso(string $species): void// void signifie pas de retour (cette méthode est une procédure)
         {
             // si $species se touve dans la constante ESPECE_PERSO
             // qui est un tableau (utilisation de in_array)
@@ -65,5 +66,48 @@ class PersOOOn {
             }
         }
 
+        // setter de $nomPerso (protection + de 3 à 16 caractères)
+        public function setNomPerso(string $theName): void
+        {
+            // on retire les tags puis les espaces avant et arrière
+            $theName = trim(strip_tags($theName));
+            // si $theName est plus petit que 3 caractères
+            $nameLength = strlen($theName); // prise de longueur
+            if($nameLength<3){
+                throw new Exception("Le nom est trop court !", 334);
+            }elseif($nameLength>16){
+                throw new Exception("Le nom est trop long !",335);
+            }
+            $this->nomPerso = $theName;
+
+        }
+
+        // setter de $xpPerso (int positif)
+
+        // setter de $hpPerso (bool pour false ou un int)
+
+
+        /*
+        Getters - accessors
+        Permet de récupérer des propriétés généralement private ou protected
+        en dehors de la classe.
+        On utilise le nom de la propriété auquel on préfixe avec le mot clef
+        get suivi de la première lettre en majuscule :
+        pour $especePerso => getEspecePerso()
+        */
+
+        // getter de $especePerso
+        public function getEspecePerso(): string
+        {
+            return $this->especePerso;
+        }
+
+        // getter de $nomPerso (string))
+
+        // getter de $xpPerso (null ou int)
+
+        // getter de $hpPerso (bool|null|int)
+
+        
 
 }

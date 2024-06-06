@@ -96,32 +96,34 @@ class PersoClass03 {
 
     //setter de hp
     public function setHp(int $hp){
-        if($hp<=0){
-            throw new Exception("int positif uniquement", 335);
+        if($hp<=1){
+            throw new Exception("Int positif uniquement", 335);
         }
         $this->hp = $hp;        
     }
 
     //setter de age
     public function setAge(int $age){
-        if($age<=12){
-            throw new Exception("doit être plus grand que 12", 336);
+        if($age<12){
+            throw new Exception("Doit être plus grand que 12", 336);
         }
         $this->age = $age;        
     }
 
     //setter de xp
-    public function setXp(int $xp){
+    public function setXp(int $xp): void
+    {
         if($xp<=0){
-            throw new Exception("seulement un entier positif", 337);
+            throw new Exception("Seulement un entier positif", 337);
         }
         $this->xp = $xp;        
     }
 
     //setter de level
-    public function setLevel(int $level){
+    public function setLevel(int $level): void
+    {
         if($level<=0){
-            throw new Exception("seulement un entier positif", 338);
+            throw new Exception("Seulement un entier positif", 338);
         }
         $this->level = $level;        
     }
@@ -137,7 +139,8 @@ class PersoClass03 {
     } 
 
     //setter de alive
-    public function setAlive(string|bool|null|int $alive){
+    public function setAlive(string|bool|null|int $alive): void
+    {
         if(is_null($alive)||is_string($alive)){
             $this->alive = null;
         }elseif($alive===0){
