@@ -1,13 +1,16 @@
 <?php
 
 require_once "PersOOn.php";
+require_once "PersOOnReal.php";
 
 $perso1 = "Pas encore de personnage";
+$perso2 = "Pas encore de personnage 2";
 
 // si on a cliqué sur envoyer
 if(isset($_POST['especePerso'],$_POST['nomPerso'], $_POST['xpPerso'], $_POST['hpPerso'])){
     try{
         $perso1 = new PersOOn($_POST['especePerso'],$_POST['nomPerso'], (int)$_POST['xpPerso'], (int)$_POST['hpPerso']);
+        $perso2 = new PersOOnReal($_POST['especePerso'],$_POST['nomPerso']."2", (int)$_POST['xpPerso'], (int)$_POST['hpPerso']);
     }catch(Exception $e){
         echo $e->getCode()." ".$e->getMessage();
     }
@@ -62,13 +65,24 @@ if(isset($_POST['especePerso'],$_POST['nomPerso'], $_POST['xpPerso'], $_POST['hp
 
     <h2>valeur POST</h2>
     <?php
-    var_dump($_POST);
-    echo "<hr>";
+      var_dump($_POST);
+      echo "<hr>";
     ?>
 
-    <h2>var_dump</h2>
+    <h2>var_dump perso 1</h2>
     <?php
-    var_dump($perso1);
+      var_dump($perso1);
+    ?>
+
+    <h2>var_dump perso 2</h2>
+    <?php
+      var_dump($perso2);
+    ?>
+    <h2>throw dice</h2>
+    <?php
+      if (gettype($perso2) != "string"){
+        var_dump($perso2->throw_dice(PersOOnReal::SMALL_DICE, 5));
+      }
     ?>
 
 </body>

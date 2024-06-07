@@ -14,6 +14,10 @@ class PersOOn {
     "Hobbit",
     "Gobelin",
   ];
+  public const SMALL_DICE = 0;
+  public const BIG_DICE = 1;
+  public const THROW_DICE_SMALL = 6;
+  public const THROW_DICE_BIG = 20;
 
   public function __construct(string $species, string $name, ?int $xp, null|bool|int $hp) {
     $this->setEspece($species);
