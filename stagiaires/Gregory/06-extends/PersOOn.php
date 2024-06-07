@@ -19,7 +19,7 @@ class PersOOn {
   public const THROW_DICE_SMALL = 6;
   public const THROW_DICE_BIG = 20;
 
-  public function __construct(string $species, string $name, ?int $xp, null|bool|int $hp) {
+  public function __construct(string $species, string $name, ?int $xp, null|bool|int $hp=null) {
     $this->setEspece($species);
     $this->setName($name);
     if ($xp !== null)$this->setXp($xp);

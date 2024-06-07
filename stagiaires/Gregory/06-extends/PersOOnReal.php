@@ -5,19 +5,52 @@ class PersOOnReal extends PersOOn {
   protected ?int $ability;
   protected ?int $speed;
 
-  // the hp value for each species
-  public const SPECIES_HP = [
-    "Humain"=>100,
-    "Elfe"=>120,
-    "Nain"=>60,
-    "Orc"=>170,
-    "Hobbit"=>70,
-    "Gobelin"=>50,
+  // the stats for each species
+  public const SPECIES_STATS = [
+    "Humain"=>[
+      "hp"=>100,
+      "strength"=>120,
+      "ability"=>130,
+      "speed"=>120,
+    ],
+    "Elfe"=>[
+      "hp"=>120,
+      "strength"=>80,
+      "ability"=>120,
+      "speed"=>140,
+    ],
+    "Nain"=>[
+      "hp"=>60,
+      "strength"=>120,
+      "ability"=>140,
+      "speed"=>90,
+    ],
+    "Orc"=>[
+      "hp"=>170,
+      "strength"=>150,
+      "ability"=>40,
+      "speed"=>30,
+    ],
+    "Hobbit"=>[
+      "hp"=>70,
+      "strength"=>100,
+      "ability"=>130,
+      "speed"=>110,
+    ],
+    "Gobelin"=>[
+      "hp"=>50,
+      "strength"=>80,
+      "ability"=>150,
+      "speed"=>150,
+    ],
   ];
 
-  public function __construct(string $species, string $name, ?int $xp, null|bool|int $hp) {
-    parent::__construct($species, $name, $xp, $hp);
-    $this->hp = self::SPECIES_HP[$species];
+  public function __construct(string $species, string $name, ?int $xp) {
+    parent::__construct($species, $name, $xp);
+    $this->hp = self::SPECIES_STATS[$species]["hp"];
+    $this->strength = self::SPECIES_STATS[$species]["strength"];
+    $this->ability = self::SPECIES_STATS[$species]["ability"];
+    $this->speed = self::SPECIES_STATS[$species]["speed"];
   }
 
   public function throw_dice(int $dice_type=self::SMALL_DICE, int $nb_times=1):array {
