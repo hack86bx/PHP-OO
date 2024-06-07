@@ -41,6 +41,7 @@ class PersOOOn {
             $this->setEspecePerso($species2);
             // setter pour le nom
             #
+            $this->setNomPerso($name);
         }
 
         /*
@@ -60,8 +61,7 @@ class PersOOOn {
         {
             // si $species se touve dans la constante ESPECE_PERSO
             // qui est un tableau (utilisation de in_array)
-            // self représente la class
-            $name = trim(strip_tags($species));
+            // self représente la classe actuelle
             if(in_array($species,self::ESPECE_PERSO)){
                 $this->especePerso = $species;
             }else{
@@ -70,12 +70,15 @@ class PersOOOn {
         }
 
         // setter de $nomPerso (protection + 3 à 16 caractères)
-        public function setNomPerso(string $name): void
+        public function setNomPerso(string $theName): void
         {
-            if (strlen($name) >= 3 && strlen($name) <= 16) {
-            $this->nomPerso = $name;
+            $theName = trim(strip_tags($theName));
+            if (strlen($theName) < 3 && strlen($theName) > 16) {
+                $this->nomPerso = $theName;
+            } else if (strlen($theName) > 16) { 
+                throw new Exception("Le nom est trop long !", 335);
             } else {
-            throw new Exception("Nom invalide !", 333);
+                throw new Exception("Le nom est trop court !", 334);
             }
         }
 
@@ -90,12 +93,13 @@ class PersOOOn {
         }
 
         // setter de $hpPerso (bool pour false ou un int)
-        public function setHpPerso(null|bool|int $hp): void
+        public function setHpPerso(bool|int $hp): void
         {
-            if ($hp === null || $hp === false || is_int($hp)) {
-            $this->hpPerso = $hp;
+            $hpPerso = $hp;
+            if ($hpPerso === true){
+                $this->hpPerso = $hp;
             } else {
-            throw new Exception("HP invalide !", 333);
+                throw new Exception("HP invalide !", 333);
             }
         }
 
