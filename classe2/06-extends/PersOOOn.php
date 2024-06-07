@@ -6,7 +6,7 @@ class PersOOOn {
      */
     private string $especePerso;
     private string $nomPerso;
-    protected ?int $xpPerso; // xp du personnage, peut être null ou int (?int)
+    protected ?int $xpPerso=0; // xp du personnage, peut être null ou int (?int)
     // équivalent depuis PHP 8.0 (Union type) : protected null|int $xpPerso;
     protected null|bool|int $hpPerso; // si plus de 2 types, utilisation des pipes
 
@@ -22,6 +22,10 @@ class PersOOOn {
         "Hobbit",
         "Gobelin",
     ];
+
+    public const THROW_DICE_SMALL = 6;
+    public const THROW_DICE_BIG = 20;
+
 
     /*
     Méthodes -> équivalent fonctions
@@ -41,7 +45,9 @@ class PersOOOn {
             $this->setEspecePerso($species2);
             // setter pour le nom
             $this->setNomPerso($name);
-            $this->setXpPerso(0);
+            // ici non utilisation du setter pour vérifier que l'enfant peut
+            // changer ce paramètre qui est protected
+           // $this->setXpPerso(0);
             $this->setHpPerso(1000);
         }
 
