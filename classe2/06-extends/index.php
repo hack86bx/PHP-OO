@@ -103,7 +103,11 @@ if(isset($_POST['especePerso'])){
     <?php var_dump($_POST); ?>
     <h3>Données du personnage PersOOOn crée  : </h3>
     <?php 
-    var_dump($perso1); ?>
+    var_dump($perso1); 
+    if(is_object($perso1)){
+        echo $perso1->getInfoPerso();
+    }
+    ?>
     <h3>Données du personnage PersOOOReal crée : </h3>
     <?php 
     /* utilisation d'un getter du parent
@@ -113,6 +117,9 @@ if(isset($_POST['especePerso'])){
     
     */ 
     var_dump($perso2);
+    if(is_object($perso2)){
+        echo $perso2->getInfoPerso();
+    }
     ?>
 </body>
 </html>

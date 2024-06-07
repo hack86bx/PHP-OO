@@ -46,10 +46,13 @@ class PersOOOn {
             $this->setEspecePerso($species2);
             // setter pour le nom
             $this->setNomPerso($name);
-            // ici non utilisation du setter pour vérifier que l'enfant peut
-            // changer ce paramètre qui est protected
-           // $this->setXpPerso(0);
+            // setter pour l'HP
             $this->setHpPerso(1000);
+            // setter pour les infos du Personnage
+            $this->setInfoPerso("
+            <h3>{$this->getNomPerso()} est un.e {$this->getEspecePerso()}</h3>
+            ");
+
         }
 
         /*
