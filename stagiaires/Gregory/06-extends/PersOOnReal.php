@@ -84,15 +84,15 @@ class PersOOnReal extends PersOOn {
   }
 
   // setters
-  public function setStrength(int $strength):PersOOnReal {
+  public function setStrength(int $strength):self {
     $this->speed = $strength;
     return $this;
   }
-  public function setAbility(int $ability):PersOOnReal {
+  public function setAbility(int $ability):self {
     $this->speed = $ability;
     return $this;
   }
-  public function setSpeed(int $speed):PersOOnReal {
+  public function setSpeed(int $speed):self {
     $this->speed = $speed;
     return $this;
   }
