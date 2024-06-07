@@ -6,9 +6,10 @@ class PersOOOn {
      */
     private string $especePerso;
     private string $nomPerso;
+    protected ?string $infoPerso;
     protected ?int $xpPerso=0; // xp du personnage, peut être null ou int (?int)
     // équivalent depuis PHP 8.0 (Union type) : protected null|int $xpPerso;
-    protected null|bool|int $hpPerso; // si plus de 2 types, utilisation des pipes
+    protected ?int $hpPerso;
 
     /*
     Constantes -> équivalent constantes
@@ -102,15 +103,17 @@ class PersOOOn {
         }
 
     
-        // setter de $hpPerso (bool pour false ou un int)
-        public function setHpPerso(bool|int $hpPerso): void
+        // setter de $hpPerso
+        public function setHpPerso(int $hpPerso): void
         {
-            if($hpPerso===true){
-                throw new Exception("Le booléen ne peut être que false");
-            }
             $this->hpPerso = $hpPerso;
         }
 
+        // setter de $infoPerso
+        public function setInfoPerso(string $infoPerso)
+        {
+            $this->infoPerso = $infoPerso;
+        }
 
         /*
         Getters - accessors
@@ -141,11 +144,17 @@ class PersOOOn {
 
         // getter de $hpPerso (bool|null|int)
 
-        public function getXpPerso(): null|bool|int
+        public function getXpPerso(): ?int
         {
             return $this->xpPerso;
         }
 
+        // getter de $infoPerso
+        public function getInfoPerso(): ?string
+        {
+            return $this->infoPerso;
+        }
+    
 
 
     

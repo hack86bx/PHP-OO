@@ -106,10 +106,13 @@ if(isset($_POST['especePerso'])){
     var_dump($perso1); ?>
     <h3>Données du personnage PersOOOReal crée : </h3>
     <?php 
-    // utilisation d'un getter du parent
+    /* utilisation d'un getter du parent
     echo $perso2->getEspecePerso();
     echo "<br>";
     var_dump($perso2->lancePetitDes(10));
-    var_dump($perso2); ?>
+    
+    */ 
+    var_dump($perso2);
+    ?>
 </body>
 </html>

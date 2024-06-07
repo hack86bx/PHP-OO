@@ -10,6 +10,7 @@ class PersOOOReal extends PersOOOn{
     protected ?int $force;
     protected ?int $habilete;
     protected ?int $vitesse;
+    
 
     // on peut surcharger une méthode enfant
     public function __construct(string $species2, string $name)
@@ -18,9 +19,39 @@ class PersOOOReal extends PersOOOn{
             // lors de l'instanciation de PersOOOReal
             parent::__construct($species2,$name);
             // on ajoute nos besoins
-            $this->force = 20;
+            $this->initPerso();
+
         }
 
+    /*
+    
+    Initialisation d'un personnage suivant son genre :
+    "Humain",
+        "Elfe",
+        "Nain",
+        "Orc",
+        "Hobbit",
+        "Gobelin",
+
+        setHpPerso
+        setForce
+        setHabilite
+        setVitesse
+    */
+
+    protected function initPerso(){
+        switch($this->getEspecePerso()){
+            case "Humain":
+
+                break;
+        }
+    }
+
+    /*
+
+    Lancés de dés
+
+    */
     public function lancePetitDes($nb = 1): array
     {
         $lance = array();
@@ -30,6 +61,20 @@ class PersOOOReal extends PersOOOn{
 
         return $lance;
     }
+
+    public function lanceGrandDes($nb = 1): array
+    {
+        $lance = array();
+        for($i=1;$i<=$nb;$i++){
+            $lance[$i] = mt_rand(1,self::THROW_DICE_BIG);
+        }
+
+        return $lance;
+    }
+
+    /*
+    GETTERS AND SETTERS
+    */
 
     public function getForce():?int
     {
@@ -61,4 +106,5 @@ class PersOOOReal extends PersOOOn{
     {
         $this->vitesse = $vitesse;
     }
+
 }
