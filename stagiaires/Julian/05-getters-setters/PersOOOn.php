@@ -35,15 +35,14 @@ class PersOOOn {
          Elle permet de passer des paramètres lors de la création de l'instance
          */
 
-        public function __construct(string $species2, string $name)
-        {
-            // on va utiliser les setters pour remplir les paramètres
-            $this->setEspecePerso($species2);
-            // setter pour le nom
-            $this->setNomPerso($name);
-            $this->setXpPerso(0);
-            $this->setHpPerso(1000);
-        }
+         public function __construct(string $species2, string $name, int $xp = 0, bool|int $hp = false)
+         {
+             //! on va utiliser les setters pour remplir les paramètres
+             $this->setEspecePerso($species2);
+             $this->setNomPerso($name);
+             $this->setXpPerso($xp);
+             $this->sethpPerso($hp);
+         }
 
         /*
         Setters (mutators)
@@ -68,41 +67,39 @@ class PersOOOn {
             }
         }
 
-        // setter de $nomPerso (protection + de 3 à 16 caractères)
-        public function setNomPerso(string $theName): void
-        {
-            // on retire les tags puis les espaces avant et arrière
-            $theName = trim(strip_tags($theName));
-            // si $theName est plus petit que 3 caractères
-            $nameLength = strlen($theName); // prise de longueur
-            if($nameLength<3){
-                throw new Exception("Le nom est trop court !", 334);
-            }elseif($nameLength>16){
-                throw new Exception("Le nom est trop long !",335);
-            }
-            $this->nomPerso = $theName;
+        // setter de $nomPerso (protection + 3 à 16 caractères)
+        // with trim and htmlspecialcharacters and striptags
 
+        public function setNomPerso(string $name): void
+        {
+            $name = trim(htmlspecialchars(strip_tags($name)));
+            if(strlen($name) >= 3 && strlen($name) <= 16){
+                $this->nomPerso = $name;
+            }else{
+                throw new Exception("Le nom doit être compris entre 3 et 16 caractères", 666);
+            }
         }
 
         // setter de $xpPerso (int positif)
 
-        public function setXpPerso(int $xpPerso): void
+        public function setXpPerso(int $xp): void
         {
-            if($xpPerso<0){
-                throw new Exception("Seul un int positif est autorisé",336);
+            if($xp >= 0){
+                $this->xpPerso = $xp;
+            }else{
+                throw new Exception("L'expérience doit être un nombre positif", 999);
             }
-            $this->xpPerso = $xpPerso;
-
         }
 
-    
         // setter de $hpPerso (bool pour false ou un int)
-        public function setHpPerso(bool|int $hpPerso): void
+
+        public function sethpPerso(bool|int $hp): void
         {
-            if($hpPerso===true){
-                throw new Exception("Le booléen ne peut être que false");
+            if(is_bool($hp) || is_int($hp)){
+                $this->hpPerso = $hp;
+            }else{
+                throw new Exception("Les points de vie doivent être un booléen ou un nombre", 777);
             }
-            $this->hpPerso = $hpPerso;
         }
 
 
@@ -122,26 +119,25 @@ class PersOOOn {
         }
 
         // getter de $nomPerso (string))
+
         public function getNomPerso(): string
         {
             return $this->nomPerso;
         }
 
+
         // getter de $xpPerso (null ou int)
-        public function getHpPerso(): ?int
-        {
-            return $this->hpPerso;
-        }
 
-        // getter de $hpPerso (bool|null|int)
-
-        public function getXpPerso(): null|bool|int
+        public function getXpPerso(): null|int
         {
             return $this->xpPerso;
         }
 
+        // getter de $hpPerso (bool|null|int)
 
-
-    
+        public function getHpPerso(): null|bool|int
+        {
+            return $this->hpPerso;
+        }
 
 }
