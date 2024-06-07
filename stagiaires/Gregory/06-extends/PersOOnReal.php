@@ -9,48 +9,83 @@ class PersOOnReal extends PersOOn {
   public const SPECIES_STATS = [
     "Humain"=>[
       "hp"=>100,
+      "hp_dices"=>[self::SMALL_DICE, 3],
       "strength"=>120,
+      "strength_dices"=>[self::SMALL_DICE, 2],
       "ability"=>130,
+      "ability_dices"=>[self::SMALL_DICE, 2],
       "speed"=>120,
+      "speed_dices"=>[self::SMALL_DICE, 2],
     ],
     "Elfe"=>[
       "hp"=>120,
+      "hp_dices"=>[self::SMALL_DICE, 3],
       "strength"=>80,
+      "strength_dices"=>[self::SMALL_DICE, 2],
       "ability"=>120,
+      "ability_dices"=>[self::SMALL_DICE, 2],
       "speed"=>140,
+      "speed_dices"=>[self::SMALL_DICE, 2],
     ],
     "Nain"=>[
       "hp"=>60,
+      "hp_dices"=>[self::SMALL_DICE, 3],
       "strength"=>120,
+      "strength_dices"=>[self::SMALL_DICE, 2],
       "ability"=>140,
+      "ability_dices"=>[self::SMALL_DICE, 2],
       "speed"=>90,
+      "speed_dices"=>[self::SMALL_DICE, 2],
     ],
     "Orc"=>[
       "hp"=>170,
+      "hp_dices"=>[self::SMALL_DICE, 3],
       "strength"=>150,
+      "strength_dices"=>[self::SMALL_DICE, 2],
       "ability"=>40,
+      "ability_dices"=>[self::SMALL_DICE, 2],
       "speed"=>30,
+      "speed_dices"=>[self::SMALL_DICE, 2],
     ],
     "Hobbit"=>[
       "hp"=>70,
+      "hp_dices"=>[self::SMALL_DICE, 3],
       "strength"=>100,
+      "strength_dices"=>[self::SMALL_DICE, 2],
       "ability"=>130,
+      "ability_dices"=>[self::SMALL_DICE, 2],
       "speed"=>110,
+      "speed_dices"=>[self::SMALL_DICE, 2],
     ],
     "Gobelin"=>[
       "hp"=>50,
+      "hp_dices"=>[self::SMALL_DICE, 3],
       "strength"=>80,
+      "strength_dices"=>[self::SMALL_DICE, 2],
       "ability"=>150,
+      "ability_dices"=>[self::SMALL_DICE, 2],
       "speed"=>150,
+      "speed_dices"=>[self::SMALL_DICE, 2],
     ],
   ];
 
   public function __construct(string $species, string $name, ?int $xp) {
     parent::__construct($species, $name, $xp);
-    $this->hp = self::SPECIES_STATS[$species]["hp"];
-    $this->strength = self::SPECIES_STATS[$species]["strength"];
-    $this->ability = self::SPECIES_STATS[$species]["ability"];
-    $this->speed = self::SPECIES_STATS[$species]["speed"];
+    $hp_dices = self::SPECIES_STATS[$species]["hp_dices"];
+    $hp_bonus = array_sum($this->throw_dice($hp_dices[0], $hp_dices[1]));
+    $this->hp = self::SPECIES_STATS[$species]["hp"] + $hp_bonus;
+
+    $strength_dices = self::SPECIES_STATS[$species]["strength_dices"];
+    $strength_bonus = array_sum($this->throw_dice($strength_dices[0], $strength_dices[1]));
+    $this->strength = self::SPECIES_STATS[$species]["strength"] + $strength_bonus;
+
+    $ability_dices = self::SPECIES_STATS[$species]["ability_dices"];
+    $ability_bonus = array_sum($this->throw_dice($ability_dices[0], $ability_dices[1]));
+    $this->ability = self::SPECIES_STATS[$species]["ability"] + $ability_bonus;
+
+    $speed_dices = self::SPECIES_STATS[$species]["speed_dices"];
+    $speed_bonus = array_sum($this->throw_dice($speed_dices[0], $speed_dices[1]));
+    $this->speed = self::SPECIES_STATS[$species]["speed"] + $speed_bonus;
   }
 
   public function throw_dice(int $dice_type=self::SMALL_DICE, int $nb_times=1):array {
