@@ -40,9 +40,7 @@ class PersOOOn {
             // on va utiliser les setters pour remplir les paramètres
             $this->setEspecePerso($species2);
             // setter pour le nom
-            $this->setNomPerso($name);
-            $this->setXpPerso(0);
-            $this->setHpPerso(1000);
+            #
         }
 
         /*
@@ -68,42 +66,31 @@ class PersOOOn {
             }
         }
 
-        // setter de $nomPerso (protection + de 3 à 16 caractères)
-        public function setNomPerso(string $theName): void
+        // setter de $nomPerso (protection + 3 à 16 caractères)
+        public function setNomPerso(string $nom): void
         {
-            // on retire les tags puis les espaces avant et arrière
-            $theName = trim(strip_tags($theName));
-            // si $theName est plus petit que 3 caractères
-            $nameLength = strlen($theName); // prise de longueur
-            if($nameLength<3){
-                throw new Exception("Le nom est trop court !", 334);
-            }elseif($nameLength>16){
-                throw new Exception("Le nom est trop long !",335);
-            }
-            $this->nomPerso = $theName;
-
+            $this->nomPerso = $nom;
         }
 
         // setter de $xpPerso (int positif)
-
-        public function setXpPerso(int $xpPerso): void
+        public function setXpPerso(int $xp): void
         {
-            if($xpPerso<0){
-                throw new Exception("Seul un int positif est autorisé",336);
+            if($xp >= 0){
+                $this->xpPerso = $xp;
+            }else{
+                throw new Exception("Xp ne peut pas être négatif !", 333);
             }
-            $this->xpPerso = $xpPerso;
-
         }
 
-    
         // setter de $hpPerso (bool pour false ou un int)
-        public function setHpPerso(bool|int $hpPerso): void
+        public function setHpPerso(bool|int $hp): void
         {
-            if($hpPerso===true){
-                throw new Exception("Le booléen ne peut être que false");
+            if($hp === false || $hp >= 0){
+                $this->hpPerso = $hp;
+            }else{
+                throw new Exception("Hp ne peut pas être négatif ou égal à false !", 333);
             }
-            $this->hpPerso = $hpPerso;
-        }
+        }   
 
 
         /*
@@ -128,20 +115,13 @@ class PersOOOn {
         }
 
         // getter de $xpPerso (null ou int)
-        public function getHpPerso(): ?int
-        {
-            return $this->hpPerso;
-        }
-
-        // getter de $hpPerso (bool|null|int)
-
-        public function getXpPerso(): null|bool|int
+        public function getXpPerso(): ?int
         {
             return $this->xpPerso;
         }
-
-
-
-    
-
+        // getter de $hpPerso (bool|null|int)
+        public function getHpPerso(): bool|null|int
+        {
+            return $this->hpPerso;
+        }
 }

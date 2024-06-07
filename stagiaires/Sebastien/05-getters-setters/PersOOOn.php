@@ -35,14 +35,13 @@ class PersOOOn {
          Elle permet de passer des paramètres lors de la création de l'instance
          */
 
-        public function __construct(string $species2, string $name)
+        public function __construct(string $species2, string $name,)
         {
             // on va utiliser les setters pour remplir les paramètres
             $this->setEspecePerso($species2);
-            // setter pour le nom
             $this->setNomPerso($name);
             $this->setXpPerso(0);
-            $this->setHpPerso(1000);
+            $this->setHpPerso(100);
         }
 
         /*
@@ -68,43 +67,34 @@ class PersOOOn {
             }
         }
 
-        // setter de $nomPerso (protection + de 3 à 16 caractères)
-        public function setNomPerso(string $theName): void
+        // setter de $nomPerso (protection + 3 à 16 caractères)
+        public function setNomPerso(string $nom) 
         {
-            // on retire les tags puis les espaces avant et arrière
-            $theName = trim(strip_tags($theName));
-            // si $theName est plus petit que 3 caractères
-            $nameLength = strlen($theName); // prise de longueur
-            if($nameLength<3){
-                throw new Exception("Le nom est trop court !", 334);
-            }elseif($nameLength>16){
-                throw new Exception("Le nom est trop long !",335);
-            }
-            $this->nomPerso = $theName;
-
+            $nom = trim(strip_tags($nom));
+            if(strlen($nom) < 3 ) {
+                throw new Exception("nom trop court", 444);
+            }elseif (strlen($nom) > 16)
+            throw new Exception("nom trop long", 445);
+            $this->nomPerso = $nom;
         }
-
         // setter de $xpPerso (int positif)
-
-        public function setXpPerso(int $xpPerso): void
+        public function setXpPerso(int $xp)
         {
-            if($xpPerso<0){
-                throw new Exception("Seul un int positif est autorisé",336);
+            $xp = trim(strip_tags($xp));
+            if(strlen($xp) < 0) {
+                throw new Exception("tes level 0", 555);
             }
-            $this->xpPerso = $xpPerso;
-
+            $this->xpPerso = $xp;
         }
-
-    
         // setter de $hpPerso (bool pour false ou un int)
-        public function setHpPerso(bool|int $hpPerso): void
+        public function setHpPerso(int $hp)
         {
-            if($hpPerso===true){
-                throw new Exception("Le booléen ne peut être que false");
+            $hp = trim(strip_tags($hp));
+            if(strlen($hp) < 0) {
+                throw new Exception("tes mort", 666);
             }
-            $this->hpPerso = $hpPerso;
+            $this->hpPerso = $hp;
         }
-
 
         /*
         Getters - accessors
@@ -120,28 +110,19 @@ class PersOOOn {
         {
             return $this->especePerso;
         }
-
         // getter de $nomPerso (string))
         public function getNomPerso(): string
         {
-            return $this->nomPerso;
+            return $this->especePerso;
         }
-
         // getter de $xpPerso (null ou int)
-        public function getHpPerso(): ?int
-        {
-            return $this->hpPerso;
-        }
-
-        // getter de $hpPerso (bool|null|int)
-
-        public function getXpPerso(): null|bool|int
+        public function getXpPerso(): ?int
         {
             return $this->xpPerso;
         }
-
-
-
-    
-
+        // getter de $hpPerso (bool|null|int)
+        public function getHpPerso(): bool|null|int
+        {
+            return $this->hpPerso;
+        }
 }
