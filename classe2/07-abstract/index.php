@@ -12,8 +12,19 @@ require_once "PersoClasse2Abstract.php";
 </head>
 <body>
 <h1>Abstract | classes abstraites</h1>
-<p>Une classe abstraite est une classe qui ne peut pas être instanciée. Elle est utilisée pour définir des méthodes et des propriétés qui seront héritées par des classes enfants.</p>
+<p>Une classe abstraite est une classe qui ne peut pas être instanciée. Elle est utilisée pour définir des méthodes qui seront héritées par des classes enfants.</p>
 <p>Une classe abstraite peut contenir des méthodes abstraites et des méthodes non abstraites.</p>
 <p>Une méthode abstraite est une méthode qui n'a pas de corps. Elle est définie avec le mot clé abstract et ne peut pas être définie avec les mots clés private, protected ou final</p>
+<pre><code>// impossible d'instancier la classe abstraite:
+// $perso1 = new PersoClasse2Abstract();</code></pre>
+<?php
+// impossible d'instancier la classe abstraite:
+// $perso1 = new PersoClasse2Abstract();
+try{
+
+}catch (Exception $e){
+    echo $e->getMessage();
+}
+?>
 </body>
 </html>
