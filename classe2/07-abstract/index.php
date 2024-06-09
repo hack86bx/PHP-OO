@@ -20,11 +20,7 @@ require_once "PersoClasse2Abstract.php";
 <?php
 // impossible d'instancier la classe abstraite:
 // $perso1 = new PersoClasse2Abstract();
-try{
 
-}catch (Exception $e){
-    echo $e->getMessage();
-}
 ?>
 </body>
 </html>
