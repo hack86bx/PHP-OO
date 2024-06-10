@@ -85,8 +85,9 @@ if(is_object($perso2)){
     $perso2->lanceDes("small", 3);
     $perso2->lanceDes("big", 2);
     $perso2->lanceDes("small", -3);
-    $perso2->lanceDes("big", -2);
-   */
+    $perso2->lanceDes("big", -2);*/
+
+    $perso2->initPerso();
     echo $perso2->getInfoPerso();
 }
 
