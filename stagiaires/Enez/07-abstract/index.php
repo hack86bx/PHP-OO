@@ -21,7 +21,8 @@ require_once "PersoClasse2.php";
 // $perso1 = new PersoClasse2Abstract();</code></pre>
 <?php
 // impossible d'instancier la classe abstraite:
-// $perso1 = new humanAbstract();
+// $perso1 = new PersoClasse2Abstract();
+$perso2 = new PersoClasse2("Luc" , "Humain");+
 
 
 ?>
