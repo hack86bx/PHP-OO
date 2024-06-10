@@ -1,13 +1,16 @@
 <?php
 
 require_once "PersOOOn.php";
+require_ONCE "PersOOOReal.php";
 
 $perso1 = "Pas encore de personnage";
+$perso2 = "Pas encore de personnage 'Real'";
 
 // si on a cliqué sur envoyer
 if(isset($_POST['especePerso'])){
     try{
         $perso1 = new PersOOOn(species2: $_POST['especePerso'], name: $_POST['nomPerso']);
+        $perso2 = new PersOOOReal(species2: $_POST['especePerso'], name: $_POST['nomPerso']."2");
     }catch(Exception $e){
         $error = [
             'code' => $e->getCode(),
@@ -98,8 +101,25 @@ if(isset($_POST['especePerso'])){
     </form>
     <h3>Données du tableau $_POST : </h3>
     <?php var_dump($_POST); ?>
-    <h3>Données du personnage crée : </h3>
+    <h3>Données du personnage PersOOOn crée  : </h3>
     <?php 
-    var_dump($perso1); ?>
+    var_dump($perso1); 
+    if(is_object($perso1)){
+        echo $perso1->getInfoPerso();
+    }
+    ?>
+    <h3>Données du personnage PersOOOReal crée : </h3>
+    <?php 
+    /* utilisation d'un getter du parent
+    echo $perso2->getEspecePerso();
+    echo "<br>";
+    var_dump($perso2->lancePetitDes(10));
+    
+    */ 
+    var_dump($perso2);
+    if(is_object($perso2)){
+        echo $perso2->getInfoPerso();
+    }
+    ?>
 </body>
 </html>

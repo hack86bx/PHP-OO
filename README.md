@@ -636,7 +636,7 @@ class MaClasseEnfant extends MaClasseParent {
 
 #### 2.6. Les classes abstraites
 
-Une classe abstraite est une classe qui ne peut pas être instanciée. Elle est utilisée pour définir des méthodes et des propriétés qui seront héritées par des classes enfants.
+Une classe abstraite est une classe qui ne peut pas être instanciée. Elle est utilisée pour définir des méthodes qui seront héritées par des classes enfants.
 
 Pour définir une classe abstraite, utilisez le mot clé `abstract` :
 
