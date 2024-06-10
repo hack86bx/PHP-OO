@@ -648,7 +648,7 @@ abstract class MaClasseAbstraite {
 
 Une classe abstraite peut contenir des méthodes abstraites et des méthodes non abstraites.
 
-Une méthode abstraite est une méthode qui n'a pas de corps. Elle est définie avec le mot clé `abstract` et ne peut pas être définie avec les mots clés `private`, `protected` ou `final` (final sera abordé plus loin).
+Une méthode abstraite est une méthode qui n'a pas de corps. Elle est définie avec le mot clé `abstract` et ne peut pas être définie avec les mots clés `private` ou `final` (final sera abordé plus loin).
 
 ```php
 abstract class MaClasseAbstraite {
