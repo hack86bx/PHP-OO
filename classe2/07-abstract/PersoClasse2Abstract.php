@@ -57,7 +57,8 @@ abstract class PersoClasse2Abstract
         ],
         "Nain"=>[
             "HP"=>[
-                "small"=>3
+                "small"=>3,
+                //"big"=>-1,
             ],
             "Ability"=>[
                 "big"=>-2,

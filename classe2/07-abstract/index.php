@@ -80,14 +80,8 @@ if(isset($_POST['especePerso'])){
 
 if(is_object($perso2)){
     echo "<h2>Personnage créé</h2>";
-    // echo $perso2->getInfoPerso();
-   /* test quand publiques
-    $perso2->lanceDes("small", 3);
-    $perso2->lanceDes("big", 2);
-    $perso2->lanceDes("small", -3);
-    $perso2->lanceDes("big", -2);*/
+    echo "<h3>Initialisation du personnage</h3>";
 
-    $perso2->initPerso();
     echo $perso2->getInfoPerso();
 }
 
