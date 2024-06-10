@@ -9,10 +9,6 @@ class SecondeClasse{
     public  $param1;
     public  $param2="coucou";
     public int $param3; // on peut typer les paramètres (devrait !)
-<<<<<<< HEAD
-}
-
-=======
 
     /*
     Constantes
@@ -36,4 +32,3 @@ class SecondeClasse{
     }
 
 }
->>>>>>> 0a946efa24db6f923f298a2516e5154b28574583
