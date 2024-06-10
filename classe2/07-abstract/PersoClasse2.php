@@ -83,7 +83,7 @@ class PersoClasse2 extends PersoClasse2Abstract{
         // on récupère le texte actuel du personnage
         $texte = $this->getInfoPerso();
         // on initialise le texte
-        $texte .= "<h4>Initialisation des Ability : $ability</h4>";
+        $texte .= "<h4>Initialisation de l'habileté : $ability</h4>";
         $this->setInfoPerso($texte);
         // on récupère les valeurs de base pour cette espèce
         $pourDes = self::ESPECE_PERSO[$espece]["Ability"];
@@ -92,7 +92,7 @@ class PersoClasse2 extends PersoClasse2Abstract{
             if (isset($pourDes[$size])) {
                 $ability += $this->lanceDes($size, $pourDes[$size]);
                 $texte = $this->getInfoPerso();
-                $texte .= "<p><b>Ability après lancer de dés : $ability</b></p>";
+                $texte .= "<p><b>L'habilté après lancer de dés : $ability</b></p>";
             }
         }
         // on met à jour les Ability
@@ -108,7 +108,7 @@ class PersoClasse2 extends PersoClasse2Abstract{
         // on récupère le texte actuel du personnage
         $texte = $this->getInfoPerso();
         // on initialise le texte
-        $texte .= "<h4>Initialisation des Strength : $strength</h4>";
+        $texte .= "<h4>Initialisation de la force : $strength</h4>";
         $this->setInfoPerso($texte);
         // on récupère les valeurs de base pour cette espèce
         $pourDes = self::ESPECE_PERSO[$espece]["Strength"];
@@ -117,7 +117,7 @@ class PersoClasse2 extends PersoClasse2Abstract{
             if (isset($pourDes[$size])) {
                 $strength += $this->lanceDes($size, $pourDes[$size]);
                 $texte = $this->getInfoPerso();
-                $texte .= "<p><b>Strength après lancer de dés : $strength</b></p>";
+                $texte .= "<p><b>Force après lancer de dés : $strength</b></p>";
             }
         }
         // on met à jour les Strength
@@ -133,7 +133,7 @@ class PersoClasse2 extends PersoClasse2Abstract{
         // on récupère le texte actuel du personnage
         $texte = $this->getInfoPerso();
         // on initialise le texte
-        $texte .= "<h4>Initialisation des Speed : $speed</h4>";
+        $texte .= "<h4>Initialisation de la vitesse : $speed</h4>";
         $this->setInfoPerso($texte);
         // on récupère les valeurs de base pour cette espèce
         $pourDes = self::ESPECE_PERSO[$espece]["Speed"];
@@ -142,7 +142,7 @@ class PersoClasse2 extends PersoClasse2Abstract{
             if (isset($pourDes[$size])) {
                 $speed += $this->lanceDes($size, $pourDes[$size]);
                 $texte = $this->getInfoPerso();
-                $texte .= "<p><b>Speed après lancer de dés : $speed</b></p>";
+                $texte .= "<p><b>Vitesse après lancer de dés : $speed</b></p>";
             }
         }
         // on met à jour les Speed
@@ -151,4 +151,34 @@ class PersoClasse2 extends PersoClasse2Abstract{
         $this->setInfoPerso($texte);
     }
 
+    /*
+     * Méthode pour initialiser un attribut
+     * (rapide, mais moins lisible)
+     * (à utiliser si on a beaucoup d'attributs à initialiser)
+
+    protected function initAttribute(string $attribute, string $espece)
+    {
+        // Get the current value of the attribute
+        $value = $this->{"getPerso" . ucfirst($attribute)}();
+        // Get the current text of the character
+        $texte = $this->getInfoPerso();
+        // Initialize the text
+        $texte .= "<h4>Initialisation des " . ucfirst($attribute) . " : $value</h4>";
+        $this->setInfoPerso($texte);
+        // Get the base values for this species
+        $pourDes = self::ESPECE_PERSO[$espece][$attribute];
+        // For each key (small, big) present in the constant, roll the dice
+        foreach (["small", "big"] as $size) {
+            if (isset($pourDes[$size])) {
+                $value += $this->lanceDes($size, $pourDes[$size]);
+                $texte = $this->getInfoPerso();
+                $texte .= "<p><b>" . ucfirst($attribute) . " après lancer de dés : $value</b></p>";
+            }
+        }
+        // Update the attribute
+        $this->{"setPerso" . ucfirst($attribute)}($value);
+        // Update the text
+        $this->setInfoPerso($texte);
+    }
+    */
 }
