@@ -48,13 +48,13 @@ $perso2 = new PersoClasse2("Luc","Humain"); // fonctionne</code></pre>
     <form action="" method="POST" name="perso">
         <i class="tips"><span style="color: red">*</span> Utilisez un nom de minimum 3 et maximum 16 caractères.</i>
         <div>
-            <label for="nomPerso">Nom du personage : </label>
-            <input type="text" name="nomPerso" placeholder="Nom du personage" id="nomPerso" required>
+            <label for="nomPerso">Nom du personnage : </label>
+            <input type="text" name="nomPerso" placeholder="Nom du personnage" id="nomPerso" required>
         </div>
         <br>
         <i class="tips"><span style="color: red">*</span> L'espèce ne doit pas être Unknown.</i>
         <div>
-            <label for="especePerso">Espèce du personage : </label>
+            <label for="especePerso">Espèce du personnage : </label>
             
             <select name="especePerso" id="especePerso">
                 <option value="nimporte">Unknown</option>
@@ -62,9 +62,9 @@ $perso2 = new PersoClasse2("Luc","Humain"); // fonctionne</code></pre>
                     // on peut facilement lire une constante public depuis la classe
                     // sans devoir l'instancier avec sont nom, puis ::, puis le nom de la
                     // constante
-                    foreach(PersoClasse2::ESPECE_PERSO as $item):
+                    foreach(PersoClasse2::ESPECE_PERSO as $key => $item):
                 ?>
-                <option value="<?=$item?>"><?=$item?></option>
+                <option value="<?=$key?>"><?=$key?></option>
                 <?php
                     endforeach;
                 ?>
@@ -76,9 +76,8 @@ $perso2 = new PersoClasse2("Luc","Humain"); // fonctionne</code></pre>
     <h3>Données du tableau $_POST : </h3>
     <?php var_dump($_POST); ?>
 <?php
-// impossible d'instancier la classe abstraite:
-// $perso1 = new PersoClasse2Abstract("Luc","Humain");
-$perso2 = new PersoClasse2("Luc","Humain");
+
+
 
 var_dump($perso2);
 ?>

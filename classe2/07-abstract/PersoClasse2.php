@@ -6,4 +6,8 @@ class PersoClasse2 extends PersoClasse2Abstract{
     protected function initPerso(){
 
     }
+    // A compléter
+    protected function lanceDes(bool $size, int $nb=1){
+
+    }
 }

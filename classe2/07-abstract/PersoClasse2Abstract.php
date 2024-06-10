@@ -14,18 +14,62 @@ abstract class PersoClasse2Abstract
     protected int $persoXP = 0;
     protected int $persoHP = 1000;
     protected int $persoAbility = 100;
+    protected int $persoStrength = 80;
+    protected int $persoSpeed = 10;
 
 
     /*
      * Constantes
      */
     public const ESPECE_PERSO = [
-        "Humain",
-        "Elfe",
-        "Nain",
-        "Orc",
-        "Hobbit",
-        "Gobelin",
+        "Humain"=>
+        [
+            "HP"=>[
+                "big"=>5,
+            ],
+            "Ability"=>[
+                "big"=>1,
+                "small"=>2,
+            ],
+            "Strength"=>[
+                "big"=>1,
+                "small"=>1,
+            ],
+            "Speed"=>[
+                "small"=>1,
+            ],
+        ],
+        "Elfe"=>
+        [   
+            "HP"=>[
+                "big"=>-10,
+            ],
+            "Ability"=>[
+                "big"=>2,
+                "small"=>1,
+            ],
+            "Strength"=>[
+                "small"=>2,
+            ],
+            "Speed"=>[
+                "small"=>2,
+            ],
+        ],
+        "Nain"=>[
+            "HP"=>[
+                "small"=>3
+            ],
+            "Ability"=>[
+                "big"=>-2,
+                "small"=>1,
+            ],
+            "Strength"=>[
+                "big"=>2,
+            ],
+            "Speed"=>[
+                "small"=>-1,
+            ],
+        ],
     ];
 
     public const THROW_DICE_SMALL = 6;
@@ -45,8 +89,26 @@ abstract class PersoClasse2Abstract
         $this->setPersoEspece($espece);
     }
 
-    // Méthodes à déclarer dans les enfants
+    /*
+     * Méthodes abstraites 
+     * !!! à déclarer dans les enfants
+     * 
+    */
+
+    // Pour initialiser le personnage (en utilisant les méthodes abstraites initHP, initAbility, initStrength, initSpeed )
     abstract protected function initPerso();
+    // pour lancer $nb de dés
+    // si $nb est négatif, on doit retirer la valeur 
+    // des dés lancés, si positif ajouter
+    // $value === "small" => self::THROW_DICE_SMALL
+    // $value === "big" => self::THROW_DICE_BIG
+    abstract protected function lanceDes(string $value, int $nb=1);
+
+    abstract protected function initHP(string $espece);
+    abstract protected function initAbility(string $espece);
+    abstract protected function initStrength(string $espece);
+    abstract protected function initSpeed(string $espece);
+
 
     // GETTERS et SETTERS hérités
 
@@ -82,7 +144,7 @@ abstract class PersoClasse2Abstract
      */
     public function setPersoEspece(?string $persoEspece): void
     {
-        if(in_array($persoEspece,self::ESPECE_PERSO)){
+        if(array_key_exists($persoEspece,self::ESPECE_PERSO)){
             $this->persoEspece = $persoEspece;
         }else{
             throw new Exception("Espèce inconnue !", 335);
@@ -131,5 +193,26 @@ abstract class PersoClasse2Abstract
     }
 
 
+    public function getPersoStrength(): int
+    {
+        return $this->persoStrength;
+    }
 
+
+    public function setPersoStrength(int $persoStrength): void
+    {
+        $this->persoStrength = $persoStrength;
+    }
+
+
+    public function getPersoSpeed(): int
+    {
+        return $this->persoSpeed;
+    }
+
+
+    public function setPersoSpeed(int $persoSpeed): void
+    {
+        $this->persoSpeed = $persoSpeed;
+    }
 }
