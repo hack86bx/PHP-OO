@@ -1,16 +1,19 @@
 <?php
 
 require_once "PersOOOn.php";
-require_ONCE "PersOOOReal.php";
+require_once "PersOOOReal.php";
+require_once "PersOOOMagicien.php";
 
 $perso1 = "Pas encore de personnage";
 $perso2 = "Pas encore de personnage 'Real'";
+$perso3 = "Pas encore de personnage 'PersOOOMagicien'";
 
 // si on a cliqué sur envoyer
 if(isset($_POST['especePerso'])){
     try{
         $perso1 = new PersOOOn(species2: $_POST['especePerso'], name: $_POST['nomPerso']);
         $perso2 = new PersOOOReal(species2: $_POST['especePerso'], name: $_POST['nomPerso']."2");
+        $perso3 = new PersOOOMagicien($_POST['nomPerso']."3", $_POST['especePerso'], true);
     }catch(Exception $e){
         $error = [
             'code' => $e->getCode(),
@@ -119,6 +122,10 @@ if(isset($_POST['especePerso'])){
     var_dump($perso2);
     if(is_object($perso2)){
         echo $perso2->getInfoPerso();
+    }
+    var_dump($perso3);
+    if(is_object($perso3)){
+        echo $perso3->getInfoPerso();
     }
     ?>
 </body>
