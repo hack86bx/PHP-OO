@@ -87,6 +87,8 @@ abstract class PersoClasse2Abstract
     {
         $this->setPersoName($name);
         $this->setPersoEspece($espece);
+        // on initialise le texte du personnage
+        $this->setInfoPerso("<h3>Personnage créé : $name, de l'espèce $espece</h3>");
     }
 
     /*
