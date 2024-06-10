@@ -1,4 +1,3 @@
-
 <?php
 
 class PersOOOn {
@@ -7,7 +6,7 @@ class PersOOOn {
      */
     private string $especePerso;
     private string $nomPerso;
-    protected ?int $xpPerso; // xp du personnage, peut être null ou int (?int)
+    protected ?int $xpPerso=0; // xp du personnage, peut être null ou int (?int)
     // équivalent depuis PHP 8.0 (Union type) : protected null|int $xpPerso;
     protected null|bool|int $hpPerso; // si plus de 2 types, utilisation des pipes
 
@@ -23,6 +22,8 @@ class PersOOOn {
         "Hobbit",
         "Gobelin",
     ];
+    public const TROW_DICE_SMALL = 6;
+    public const TROW_DICE_BIG = 20;
 
     /*
     Méthodes -> équivalent fonctions
@@ -36,17 +37,16 @@ class PersOOOn {
          Elle permet de passer des paramètres lors de la création de l'instance
          */
 
-        public function __construct(string $species2, string $name, int $xp = 0, int $hp = 100)
+        public function __construct(string $species2, string $name)
         {
             // on va utiliser les setters pour remplir les paramètres
             $this->setEspecePerso($species2);
             // setter pour le nom
             $this->setNomPerso($name);
-            // setter pour XP
+            //ici non utilisation de seter pour verifier que l'enfanyt peut changer ce parametre qui est protected
+            //$this-> 
             $this->setXpPerso(0);
-            //setter pour HpPerso
-            $this->setHpPerso(1000); 
-
+            $this->setHpPerso(1000);
         }
 
         /*
@@ -72,35 +72,42 @@ class PersOOOn {
             }
         }
 
-        // setter de $nomPerso (protection + 3 à 16 caractères)
-        public function setNomPerso(string $name): void 
+        // setter de $nomPerso (protection + de 3 à 16 caractères)
+        public function setNomPerso(string $theName): void
         {
-            if (strlen($name) >= 3 && strlen($name) <= 16) {
-                $this->nomPerso = $name;
-            } else {
-                throw new Exception("Le nom doit avoir entre 3 et 16 caractères !");
+            // on retire les tags puis les espaces avant et arrière
+            $theName = trim(strip_tags($theName));
+            // si $theName est plus petit que 3 caractères
+            $nameLength = strlen($theName); // prise de longueur
+            if($nameLength<3){
+                throw new Exception("Le nom est trop court !", 334);
+            }elseif($nameLength>16){
+                throw new Exception("Le nom est trop long !",335);
             }
+            $this->nomPerso = $theName;
+
         }
 
         // setter de $xpPerso (int positif)
-        public function setXpPerso(int $xp): void 
-    {
-        if ($xp >= 0) {
-            $this->xpPerso = $xp;
-        } else {
-            throw new Exception("XP ne peut pas être négatif !");
-        }
-    }
 
-        // setter de $hpPerso (bool pour false ou un int)
-        public function setHpPerso(null|bool|int $hp): void 
-    {
-        if ($hp === null || is_bool($hp) || ($hp >= 0)) {
-            $this->hpPerso = $hp;
-        } else {
-            throw new Exception("HP doit être soit null, un booléen, soit un entier positif !");
+        public function setXpPerso(int $xpPerso): void
+        {
+            if($xpPerso<0){
+                throw new Exception("Seul un int positif est autorisé",336);
+            }
+            $this->xpPerso = $xpPerso;
+
         }
-    }
+
+    
+        // setter de $hpPerso (bool pour false ou un int)
+        public function setHpPerso(bool|int $hpPerso): void
+        {
+            if($hpPerso===true){
+                throw new Exception("Le booléen ne peut être que false");
+            }
+            $this->hpPerso = $hpPerso;
+        }
 
 
         /*
@@ -119,21 +126,26 @@ class PersOOOn {
         }
 
         // getter de $nomPerso (string))
-        public function getNomPerso(): string 
+        public function getNomPerso(): string
         {
-          return $this->nomPerso;
+            return $this->nomPerso;
         }
 
         // getter de $xpPerso (null ou int)
-        public function getXpPerso(): ?int
+        public function getHpPerso(): ?int
         {
-          return $this->xpPerso;
+            return $this->hpPerso;
         }
 
         // getter de $hpPerso (bool|null|int)
-        public function getHpPerso(): int|bol|nul 
+
+        public function getXpPerso(): null|bool|int
         {
-          return $this->hpPerso;
+            return $this->xpPerso;
         }
+
+
+
+    
 
 }

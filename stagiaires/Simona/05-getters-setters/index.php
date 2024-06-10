@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo $perso1->getEspecePerso();
     }
     var_dump($_POST, $perso1);
-
+    
 ?>
 </body>
 </html>
