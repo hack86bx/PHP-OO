@@ -1,5 +1,5 @@
 <?php
-class Perso2Classe2 extends Perso2Classe2Abstract{
+class Perso2Classe2 extends Perso2Classe2Abstract implements Perso2ActionInterface{
 
     // surcharge du constructeur
     public function __construct(string $name, string $espece)
@@ -8,6 +8,17 @@ class Perso2Classe2 extends Perso2Classe2Abstract{
         parent::__construct($name, $espece);
         // on initialise le personnage
         $this->initPerso();
+    }
+
+    // Méthode pour attaquer un personnage (interface)
+    public function attack($perso): void
+    {
+        // ici
+    }
+    // Méthode pour défendre un personnage (interface)
+    public function defend($perso): void
+    {
+        // ici
     }
     
     // Méthode abstract dans le parent DOIT être implémenté
@@ -181,4 +192,5 @@ class Perso2Classe2 extends Perso2Classe2Abstract{
         $this->setInfoPerso($texte);
     }
     */
+
 }
