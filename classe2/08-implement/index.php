@@ -1,5 +1,7 @@
 <?php
 require_once "Perso2Classe2Abstract.php";
+// appel de l'interface
+require_once "Perso2ActionInterface.php";
 // Nous sommes obligé d'appeler une classe enfant (non abstraite) de PersoClasse2Abstract.php
 require_once "Perso2Classe2.php";
 
