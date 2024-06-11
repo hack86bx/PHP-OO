@@ -5,18 +5,7 @@ require_once "PersoClasse2.php";
 
 $perso2 = "Pas encore de Personnage";
 
-// si on a cliqué sur envoyer
-if(isset($_POST['especePerso'])){
-    try{
-        $perso2 = new PersoClasse2(espece: $_POST['especePerso'], name: $_POST['nomPerso']);
 
-    }catch(Exception $e){
-        $error = [
-            'code' => $e->getCode(),
-            'message' => $e->getMessage()
-        ];
-    }
-}
 ?>
 <!doctype html>
 <html lang="fr">
@@ -76,6 +65,25 @@ $perso2 = new PersoClasse2("Luc","Humain"); // fonctionne</code></pre>
     <h3>Données du tableau $_POST : </h3>
     <?php var_dump($_POST); ?>
 <?php
+// si on a cliqué sur envoyer
+if(isset($_POST['especePerso'])){
+    try{
+        $perso2 = new PersoClasse2(espece: $_POST['especePerso'], name: $_POST['nomPerso']);
+
+    }catch(Exception $e){
+        $error = [
+            'code' => $e->getCode(),
+            'message' => $e->getMessage()
+        ];
+    }
+}
+
+if(is_object($perso2)){
+    echo "<h2>Personnage créé</h2>";
+    echo "<h3>Initialisation du personnage</h3>";
+
+    echo $perso2->getInfoPerso();
+}
 
 
 

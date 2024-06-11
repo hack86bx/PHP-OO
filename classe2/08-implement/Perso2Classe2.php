@@ -1,5 +1,5 @@
 <?php
-class PersoClasse2 extends PersoClasse2Abstract{
+class Perso2Classe2 extends Perso2Classe2Abstract{
 
     // surcharge du constructeur
     public function __construct(string $name, string $espece)

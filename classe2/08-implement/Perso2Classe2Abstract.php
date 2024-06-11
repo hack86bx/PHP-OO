@@ -1,6 +1,6 @@
 <?php
 
-abstract class PersoClasse2Abstract
+abstract class Perso2Classe2Abstract
 {
 
     /*
