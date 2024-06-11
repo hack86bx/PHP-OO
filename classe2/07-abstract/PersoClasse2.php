@@ -24,23 +24,23 @@ class PersoClasse2 extends PersoClasse2Abstract{
     }
     // À compléter
     // on peut changer la visibilité dans les enfants
-    public function lanceDes(string $size, int $nb=1): int
+    public function lanceDes(string $value, int $nb=1): int
     {
     // on choisit la valeur du dé (6 ou 20)
-    $value = $size === "small" ? self::THROW_DICE_SMALL : self::THROW_DICE_BIG;
+    $values = $value === "small" ? self::THROW_DICE_SMALL : self::THROW_DICE_BIG;
     // on récupère le texte actuel du personnage
     $texte = $this->getInfoPerso();
     // on initialise le résultat
     $result = 0;
     // on ajoute le texte de lancement
-    $texte .= "<p><b>" . ($nb > 0 ? "Ajout de $nb" : "Retrait de " . abs($nb)) . " dés de $value : </b></p>";
+    $texte .= "<p><b>" . ($nb > 0 ? "Ajout de $nb" : "Retrait de " . abs($nb)) . " dés de $values : </b></p>";
     // on lance les dés
     for($i = 1; $i <= abs($nb); $i++){
         // Etat de chaque dé
-        $lance = mt_rand(1, $value);
+        $lance = mt_rand(1, $values);
         // on ajoute ou retire le résultat
         $result += $nb > 0 ? $lance : - $lance;
-        $texte .= "<p>Résultat du dé n°$i : $lance / $value</p>";
+        $texte .= "<p>Résultat du dé n°$i : $lance / $values</p>";
     }
     // résultat final du lancé de dés
     $texte .= "<p>Résultat final des dés : <b>$result</b></p>";
@@ -50,7 +50,7 @@ class PersoClasse2 extends PersoClasse2Abstract{
     return $result;
 }
 
-    protected function initHP(string $espece)
+    protected function initHP(string $espece): void
     {
         // on récupère les valeurs de base
         $hp = $this->getPersoHP();
