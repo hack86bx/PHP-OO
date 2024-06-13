@@ -3,7 +3,7 @@
 trait PersoTrait{
     public function metEnMajuscule(?string $txt) : ?string
     {
-        $text = strtoupper($txt);
+        $text = mb_strtoupper($txt);
         return $text;
     }
 }

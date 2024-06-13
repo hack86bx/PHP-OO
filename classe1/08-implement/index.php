@@ -66,8 +66,10 @@ echo $persoWarrior2->getInfoPerso();</code></pre>
     echo $persoWarrior1->attack($persoWarrior2)."<br>";
     echo $persoWarrior2->attack($persoWarrior1)."<br>";
 
-    echo $persoWarrior3->metEnMajuscule("Hello les enfants!");
-
+    echo $persoWarrior3->metEnMajuscule("Hello les éléphants... enfants!");
+    /* impossible car le use n'est pas présent dans PersoWarrior::class
+    echo $persoWarrior2->metEnMajuscule("Hello les enfants!");
+    */
     var_dump($persoWarrior1,$persoWarrior2,$persoWarrior3);
     ?>
 </body>
